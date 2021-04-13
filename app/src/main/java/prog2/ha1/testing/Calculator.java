@@ -1,5 +1,7 @@
 package prog2.ha1.testing;
 
+import static java.lang.Math.sqrt;
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -33,11 +35,16 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if( !latestOperation.isEmpty() ) {
+            pressEqualsKey();
+        }
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        if (operation.equals("sqrt")) {
+            screen = Integer.toString((int) sqrt(Integer.parseInt(screen)));
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
