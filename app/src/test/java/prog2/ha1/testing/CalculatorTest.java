@@ -36,6 +36,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     @DisplayName("should display result after subtracting two positive numbers")
     void testPositiveSubtraction() {
@@ -51,6 +52,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     @DisplayName("should display result after adding a positive point number with a number")
     void calculatorCanDoTwoPlusTwo() {
@@ -68,6 +70,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after adding a negative number with a positive number")
+    void calculatorCanDoMinusTwoPlusFive() {
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
+}
 
 
