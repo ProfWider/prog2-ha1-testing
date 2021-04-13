@@ -75,5 +75,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-}
+    @Test
+    @DisplayName("should display the positive square root of the given number")
+    void testSquareRoot() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("sqrt");
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+}
