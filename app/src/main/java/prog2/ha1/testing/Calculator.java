@@ -41,6 +41,7 @@ public class Calculator {
 
         var result = switch(latestOperation) {
             case "1/x" -> 1 / Double.parseDouble(screen);
+            case "%" -> Double.parseDouble(screen) / 100;
             default -> throw new IllegalStateException("Unexpected value: " + latestOperation);
         };
         screen = Double.toString(result);
