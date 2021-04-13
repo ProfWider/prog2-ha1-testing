@@ -55,22 +55,21 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding more than two positive numbers")
-    void testExtendedPositiveAddition() {
+    @DisplayName("should display result after adding and subtracting more than two numbers")
+    void testExtendedAdditionAndSubtraction() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(1);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(1);
-        calc.pressBinaryOperationKey("+");
+        calc.pressNegativeKey();
         calc.pressDigitKey(1);
         calc.pressEqualsKey();
 
-        String expected = "5";
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
