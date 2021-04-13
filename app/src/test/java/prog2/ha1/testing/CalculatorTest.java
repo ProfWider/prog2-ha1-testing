@@ -51,6 +51,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after adding a positive point number with a number")
+    void calculatorCanDoTwoPlusTwo() {
+        Calculator calc = new Calculator();
 
-}
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "5.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    }
+
 
