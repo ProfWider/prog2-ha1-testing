@@ -70,7 +70,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after modulo two numbers")
+    @DisplayName("should display the percentage of the number")
     void testModulo() {
         Calculator calc = new Calculator();
 
