@@ -60,10 +60,8 @@ class CalculatorTest {
     void testTakingRoots() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("√");
-        calc.pressEqualsKey();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
 
         String expected = "3";
         String actual = calc.readScreen();
@@ -78,8 +76,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(1);
         calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey("%");
-        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("%");
 
         String expected = "0.1";
         String actual = calc.readScreen();

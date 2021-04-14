@@ -39,7 +39,13 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch (operation) {
+            case "√" -> sqrt();
+            case "%" -> calculatingPercent();
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -50,15 +56,16 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
-    public char sqrt() {
-        char root = (char) Math.sqrt(Double.parseDouble(screen));
-        return root;
+    public double sqrt() {
+        return Math.sqrt(Double.parseDouble(screen));
+
     }
 
     public double calculatingPercent() {
         double number = Double.parseDouble(screen);
         double result = number / 100;
         return result;
+
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -67,8 +74,6 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            case "√" -> sqrt();
-            case "%" -> calculatingPercent();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
