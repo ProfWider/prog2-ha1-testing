@@ -57,5 +57,16 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("%");
         assertEquals("0.5", calc.readScreen());
     }
+    
+     @Test
+    // 2.roter Test
+    void Fractional() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+        assertEquals("0.1111111111111111", calc.readScreen());
+
+    }
 }
 
