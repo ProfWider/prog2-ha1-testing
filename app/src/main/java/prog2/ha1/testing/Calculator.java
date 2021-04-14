@@ -55,6 +55,12 @@ public class Calculator {
         return root;
     }
 
+    public double calculatingPercent() {
+        double number = Double.parseDouble(screen);
+        double result = number / 100;
+        return result;
+    }
+
     public void pressEqualsKey() { // die Taste =
         var result = switch (latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
@@ -62,6 +68,7 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             case "√" -> sqrt();
+            case "%" -> calculatingPercent();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
