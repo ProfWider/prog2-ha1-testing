@@ -40,6 +40,12 @@ public class Calculator {
 
     }
 
+    public double divideByX(){
+        var x = Double.parseDouble(screen);
+        var a = 1/x;
+        return a;
+    }
+
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
@@ -57,6 +63,7 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             case "%" -> latestValue % Double.parseDouble(screen);
+            case "1/x" ->divideByX();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
