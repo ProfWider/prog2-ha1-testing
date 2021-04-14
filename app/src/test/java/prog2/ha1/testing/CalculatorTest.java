@@ -2,6 +2,7 @@ package prog2.ha1.testing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
@@ -52,8 +53,23 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
-    //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after taking root from a number")
+    void testTakingRoots() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("√");
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
