@@ -68,4 +68,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after dividing a number by X")
+    void testDevidingByX() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }

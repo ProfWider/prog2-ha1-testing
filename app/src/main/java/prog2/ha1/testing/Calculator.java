@@ -49,6 +49,8 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
+
+
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
