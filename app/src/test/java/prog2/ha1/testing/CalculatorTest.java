@@ -38,5 +38,15 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Should remove second zero")
+    void testRedundantZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(0);
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
