@@ -37,8 +37,16 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch(operation) {
 
+            case "1/x" -> divideByX();
+            case "%" -> percantage();
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 
     public double divideByX(){
         var x = Double.parseDouble(screen);
@@ -63,12 +71,12 @@ public class Calculator {
 
 
         var result = switch(latestOperation) {
+            
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            case "1/x" -> divideByX();
-            case "%" -> percantage();
+
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
