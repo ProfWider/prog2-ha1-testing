@@ -45,6 +45,11 @@ public class Calculator {
         var a = 1/x;
         return a;
     }
+    public double percantage(){
+        var x = Double.parseDouble(screen);
+        var a = x/100;
+        return a;
+    }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
@@ -62,7 +67,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            case "1/x" ->divideByX();
+            case "1/x" -> divideByX();
+            case "%" -> percantage();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

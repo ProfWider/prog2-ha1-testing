@@ -74,7 +74,9 @@ class CalculatorTest {
     void testModulo() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(100);
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("%");
         calc.pressEqualsKey();
 
