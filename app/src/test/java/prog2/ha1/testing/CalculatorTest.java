@@ -52,5 +52,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
 
+    @Test
+    @DisplayName("should display result after modulo two numbers")
+    void testModulo() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
