@@ -50,6 +50,10 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
+    public char sqrt() {
+        char root = (char) Math.sqrt(Double.parseDouble(screen));
+        return root;
+    }
 
     public void pressEqualsKey() { // die Taste =
         var result = switch (latestOperation) {
@@ -57,6 +61,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "√" -> sqrt();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
