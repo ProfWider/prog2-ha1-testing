@@ -87,8 +87,8 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after adding a negative number with a positive number")
-    void calculatorCan() {
+    @DisplayName("should display result after pressing a number and %")
+    void calculatorCanPressUnaryOperationKey() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("%");
