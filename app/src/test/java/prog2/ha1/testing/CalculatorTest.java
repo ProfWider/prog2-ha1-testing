@@ -65,9 +65,9 @@ class CalculatorTest {
     void testSubstractionMoreThanTwoNumbers() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(8);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(2);
         // Er muss also bei jeder neuen Operation Eingabe testen, ob es schon eine gab
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
@@ -84,14 +84,15 @@ class CalculatorTest {
     void testDivideByX() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(2);
         calc.pressUnaryOperationKey("1/x");
         calc.pressEqualsKey();
 
-        String expected = "0.25";
+        String expected = "0.5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
 }
 

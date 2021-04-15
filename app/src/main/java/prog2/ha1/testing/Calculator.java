@@ -26,18 +26,23 @@ public class Calculator {
         }
     }
 
+    public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if(latestOperation.isEmpty()) {
+            latestOperation = operation;
+        } else {
+            latestOperation = operation;
+            pressEqualsKey();
+        }
+    }
+
+    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        latestOperation = operation;
+    }
+
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
-    }
-
-    public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
-    }
-
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -54,6 +59,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
