@@ -25,6 +25,7 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {     // if the second number not added console shows just the first number
             screen = screen + digit;
+
         } else {                            //convert to string
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
@@ -49,8 +50,23 @@ public class Calculator {
         latestOperation = operation;
     }
 
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+
+// my fix
+public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+    latestOperation = operation;
+    latestValue = Double.parseDouble(screen);
+    var result = switch(latestOperation) {
+
+        case "%" -> latestValue /100;
+
+        default -> throw new IllegalArgumentException();
+    };
+    screen = Double.toString(result);
+    if(screen.endsWith(".0")) screen = screen.substring(0,screen.length());
+
     }
+
+
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
@@ -74,4 +90,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
+
 }
