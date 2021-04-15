@@ -60,5 +60,38 @@ class CalculatorTest {
     // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche
     // Implementierungslücken bzw. Fehler aufdecken (und in jedem Fall zwei unterschiedliche
     // Methoden-Aufruf-Kombinationen testen) und somit fehlschlagen.
+    @Test
+    @DisplayName("should display result after substracting more than two positive numbers")
+    void testSubstractionMoreThanTwoNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        // Er muss also bei jeder neuen Operation Eingabe testen, ob es schon eine gab
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after operation 1/x")
+    void testDivideByX() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
