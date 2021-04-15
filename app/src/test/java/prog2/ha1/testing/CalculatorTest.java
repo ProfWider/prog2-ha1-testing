@@ -48,5 +48,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    // Test lücken
+    @Test
+    @DisplayName("Test Dot")
+    void testDotDot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        String expected = "1.11";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
