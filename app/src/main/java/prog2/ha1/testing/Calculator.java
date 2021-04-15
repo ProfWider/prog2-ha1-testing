@@ -70,4 +70,8 @@ public class Calculator {
         screen = remember;
     }
 
+    public void pressMCKey() { // die Taste MC
+        remember = "0";
+    }
+
 }
