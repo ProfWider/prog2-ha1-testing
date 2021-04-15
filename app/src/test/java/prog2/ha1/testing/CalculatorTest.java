@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     // Teilaufgabe 1: Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht
     // getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
-    // Test der Division
+    // Test der Substraktion
     @Test
     @DisplayName("should display result after substracting two positive numbers")
     void testPositiveSubstraction() {
@@ -52,6 +52,22 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display 0 after pressing clear key")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressClearKey();
+
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
