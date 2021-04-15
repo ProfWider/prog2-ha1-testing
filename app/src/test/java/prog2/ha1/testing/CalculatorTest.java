@@ -38,5 +38,27 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    // Teilaufgabe 1: Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht
+    // getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
+    // Test der Division
+    @Test
+    @DisplayName("should display result after substracting two positive numbers")
+    void testPositiveSubstraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // Teilaufgabe 2: Schreiben Sie zwei weitere zusätzliche Tests, die zwei unterschiedliche
+    // Implementierungslücken bzw. Fehler aufdecken (und in jedem Fall zwei unterschiedliche
+    // Methoden-Aufruf-Kombinationen testen) und somit fehlschlagen.
 }
 
