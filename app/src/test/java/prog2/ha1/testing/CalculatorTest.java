@@ -62,5 +62,21 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Test + mit double stellen")
+    void testDoubleStellenOperation() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+        String expected = "22";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
