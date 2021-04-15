@@ -48,6 +48,17 @@ public class Calculator {
                 if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
                 break;
 
+            case "fract": //5. Commit
+
+                if(latestOperation.isEmpty()) {
+                    result = 1 / Double.parseDouble(screen);
+                    screen = Double.toString(result);
+                } else {
+                    result  = 1 / Double.parseDouble(screen);
+                    screen = Double.toString(result);
+                }
+                break;
+
             default:
                 throw new IllegalArgumentException();
         }
