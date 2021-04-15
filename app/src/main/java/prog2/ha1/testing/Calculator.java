@@ -33,8 +33,24 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+
+        if(!latestOperation.isEmpty()){
+            latestValue = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(latestValue);
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        }else{
+            latestValue = Double.parseDouble(screen);
+        }
+
         latestOperation = operation;
     }
+
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
