@@ -4,10 +4,9 @@ package prog2.ha1.testing;
 public class Calculator {
 
     private String screen = "0";
-
     private double latestValue;
-
     private String latestOperation = "";
+    private boolean divided = false;
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
@@ -20,9 +19,12 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
+        } else if (!latestOperation.isEmpty() && divided) {
+            screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
+            divided = true;
         }
     }
 
@@ -56,6 +58,8 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+        divided = false;
+        latestOperation = "";
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
