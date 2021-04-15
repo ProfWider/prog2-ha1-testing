@@ -38,5 +38,53 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after multiply two positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should call and display a remembered value")
+    void testCallRememberedValue() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressMplusKey();
+        calc.pressClearKey();
+        calc.pressMRKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should erase the remembered value")
+    void testEraseRememberedValue() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressMplusKey();
+        calc.pressClearKey();
+        calc.pressMCKey();
+        calc.pressMRKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

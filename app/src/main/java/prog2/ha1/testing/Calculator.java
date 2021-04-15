@@ -9,6 +9,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private String remember;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -59,4 +61,17 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
+    public void pressMplusKey() { // die Taste M+
+        remember = readScreen();
+    }
+
+    public void pressMRKey() { // die Taste MR
+        screen = remember;
+    }
+
+    public void pressMCKey() { // die Taste MC
+        remember = "0";
+    }
+
 }
