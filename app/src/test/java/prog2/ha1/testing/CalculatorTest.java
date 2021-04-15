@@ -71,5 +71,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display the result after adding two fractures.")
+    void testNegative3(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("fract");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("fract");
+        calc.pressEqualsKey();
+
+        String expected = "0.75";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
