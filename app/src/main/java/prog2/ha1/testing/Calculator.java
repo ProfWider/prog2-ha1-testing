@@ -13,31 +13,43 @@ public class Calculator {
         return screen;
     }
 
+
+    /**
+     * it specifies the entered numbers (input) in the calculator
+     * @param digit  represent the entered number (input)
+     */
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+        if(screen.equals("0")) screen = ""; //if nothing no number added console stays empty
 
-        if(latestOperation.isEmpty()) {
+        if(latestOperation.isEmpty()) {     // if the second number not added console shows just the first number
             screen = screen + digit;
-        } else {
+        } else {                            //convert to string
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
     }
+    //*********************************************************************************
 
+    /**
+     * reset the calculator
+     */
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
     }
 
+    /**
+     * defines the the operations
+     * @param operation represent the operation symbols
+     */
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -48,6 +60,9 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
+    /**
+     * defines the calculation process
+     */
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);

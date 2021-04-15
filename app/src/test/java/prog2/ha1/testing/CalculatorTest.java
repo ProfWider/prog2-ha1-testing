@@ -43,7 +43,7 @@ class CalculatorTest {
     // getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
-    void testPositivemultiplying() {
+    void testPositiveMultiplying() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(3);
@@ -57,5 +57,35 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after division two positive numbers")
+    void testAddingNegativeNummbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(6);
+        calc.pressEqualsKey();
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after converting to percent (dividing 100)")
+    void testPercentDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(555);
+        calc.pressBinaryOperationKey("%");
+        calc.pressEqualsKey();
+
+        String expected = "5.55";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
