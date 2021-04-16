@@ -159,7 +159,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    
+    @Test
+    @DisplayName("should switch result from Negative to Positive ")
+    void testSwitchtoPositive() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-9);
+        calc.pressNegativeKey("+/-");
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 

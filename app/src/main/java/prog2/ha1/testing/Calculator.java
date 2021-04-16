@@ -97,10 +97,8 @@ public class Calculator {
      */
     public void pressNegativeKey(String operation) { // die +/- Taste
         latestOperation = operation;
-
-
-        if (!screen.startsWith(" ")) screen = "-" + screen ;
-        else {screen.replace(' ','-'); }
+        if (screen.startsWith("-")) screen = screen.substring(1, screen.length());
+        else screen = "-" + screen ;
         if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
 
     }
