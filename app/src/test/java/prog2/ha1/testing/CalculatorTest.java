@@ -81,4 +81,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName(". am Ende")
+    void punktamEnde(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressEqualsKey();
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
