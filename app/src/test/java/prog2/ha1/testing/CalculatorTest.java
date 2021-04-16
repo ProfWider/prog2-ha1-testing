@@ -38,5 +38,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should delete input and display the number 0 after pressing the clear button")
+    void calculatorCanClearResult() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
+        assertEquals("0", calc.readScreen());
+    }
+
+
+
+
 }
 
