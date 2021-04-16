@@ -38,5 +38,28 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    /**
+     * умножение
+     * ресет
+     * Корень
+     * процент
+     * число с точкой
+     *
+     */
+    @Test
+    @DisplayName("should display result after pressing dot key")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+
+
+        String expected = "2.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
