@@ -83,6 +83,26 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display result after adding other floating-point numbers")
+    void calculatorCanHandleDotsOneMoreTime() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+        assertEquals("49.88", calc.readScreen());
+    }
+
+
 
 }
 
