@@ -38,7 +38,20 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should reset the konsole")
+    void testClearKey() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(7);
+        calc.pressClearKey();
+
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
@@ -94,7 +107,6 @@ class CalculatorTest {
 
         calc.pressDigitKey(5);
         calc.pressUnaryOperationKey("%");
-        //calc.pressEqualsKey();
 
         String expected = "0.05";
         String actual = calc.readScreen();
@@ -132,20 +144,7 @@ class CalculatorTest {
     }
 //
 
-    @Test
-    @DisplayName("should reset the konsole")
-    void testClearKey() {
-        Calculator calc = new Calculator();
 
-        calc.pressDigitKey(7);
-        calc.pressClearKey();
-
-
-        String expected = "0";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
     @Test
     @DisplayName("should switch result from Positive to Negative ")
     void testSwitchtoNegative() {
