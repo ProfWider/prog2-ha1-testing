@@ -147,7 +147,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should switch result Positive to Negative ")
+    @DisplayName("should switch result from Positive to Negative ")
     void testSwitchtoNegative() {
         Calculator calc = new Calculator();
 
@@ -159,7 +159,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
+    
 
 }
 

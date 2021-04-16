@@ -96,7 +96,12 @@ public class Calculator {
      * @param operation  represent the operation symbols
      */
     public void pressNegativeKey(String operation) { // die +/- Taste
+        latestOperation = operation;
 
+
+        if (!screen.startsWith(" ")) screen = "-" + screen ;
+        else {screen.replace(' ','-'); }
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
 
     }
 
