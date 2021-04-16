@@ -9,18 +9,21 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean negative = false;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
         if(screen.equals("0")) screen = "";
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
+            if(negative == true) screen = "-" + screen;
+            
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
@@ -37,7 +40,6 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -45,10 +47,11 @@ public class Calculator {
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        negative = true;
     }
 
-    public void pressEqualsKey() { // die Taste =
+    public void pressEqualsKey() { // die Taste
+        if(negative == true) screen = "-" + screen;
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -56,7 +59,9 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
         screen = Double.toString(result);
+        if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
