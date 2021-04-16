@@ -62,6 +62,26 @@ class CalculatorTest {
         assertEquals("0.8", calc.readScreen());
 
     }
+    
+
+    @Test
+    @DisplayName("should display result after adding floating-point numbers")
+    void calculatorCanHandleDots() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("13.57", calc.readScreen());
+    }
+
 
 
 }
