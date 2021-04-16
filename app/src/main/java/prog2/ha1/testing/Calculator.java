@@ -15,7 +15,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        //if(digit > 9 || digit < 0) throw new IllegalArgumentException();
         if(screen.equals("0")) screen = "";
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -37,6 +37,7 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         var result = switch(operation) {
+            case "sqr" -> Math.sqrt(Double.parseDouble(screen));
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
