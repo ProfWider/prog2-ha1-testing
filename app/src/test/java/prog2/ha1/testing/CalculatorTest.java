@@ -52,8 +52,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("new Test")
-    void testingSomething() {
+    @DisplayName("should display result after pressing the percentage button ")
+    void calculatorCanPercentage() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(8);
         calc.pressDigitKey(0);

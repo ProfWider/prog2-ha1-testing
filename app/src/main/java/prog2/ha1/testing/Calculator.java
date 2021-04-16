@@ -38,6 +38,13 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        // inspired by https://www.heise.de/tipps-tricks/Java-Strings-in-Integer-umwandeln-4060398.html
+        // (and I replaced "Integer" by "Double")
+        if(operation == "%"){
+            Double doubleNumber = (Double.parseDouble(screen) / 100);
+            screen = Double.toString(doubleNumber);
+            readScreen();
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
