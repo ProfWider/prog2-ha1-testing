@@ -62,10 +62,10 @@ class CalculatorTest {
     void testNegativeAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
         calc.pressDigitKey(1);
         calc.pressBinaryOperationKey("+");
-        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
