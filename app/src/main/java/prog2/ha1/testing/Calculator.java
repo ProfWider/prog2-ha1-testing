@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException(); // <= 0 wäre nötig, um die 0 berücksichtigen zu lassen
 
         if(screen.equals("0")) screen = "";
 
@@ -33,18 +33,21 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+
         latestOperation = operation;
     }
 
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x    // Operanden fehlen, Methode schreiben?
 
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey() { // die +/- Taste
+
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
