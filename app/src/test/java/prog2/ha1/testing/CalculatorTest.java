@@ -41,7 +41,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after multiplicating two positive numbers")
-    void testPositivemultiplication() {
+    void testPositiveMultiplication() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
