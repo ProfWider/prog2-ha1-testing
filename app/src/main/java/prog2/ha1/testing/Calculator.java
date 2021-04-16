@@ -36,16 +36,8 @@ public class Calculator {
         latestOperation = operation;
     }
 
-    public void pressUnaryOperationKey(String operation) { // sqrt = Wurzeltaste
-            var result = switch(operation) {
-            case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
-            case "%" -> Double.parseDouble(screen)/100;
-            case "1/x" -> 1/Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-    }
+    public void pressUnaryOperationKey(String operation) { latestOperation = operation; }
+
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
@@ -55,14 +47,24 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if((latestOperation!="")) {
+
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
+                case "%" -> Double.parseDouble(screen) / 100;
+                case "1/x" -> 1 / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+
+            };
+            screen = Double.toString(result);
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        }
+        if(screen.endsWith(".")){
+            screen = screen.substring(0, screen.length() - 1);
+        }
     }
 }

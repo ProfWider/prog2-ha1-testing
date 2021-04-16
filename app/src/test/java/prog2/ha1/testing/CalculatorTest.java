@@ -76,6 +76,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(4);
         calc.pressUnaryOperationKey("sqrt");
+        calc.pressEqualsKey();
         String expected = "2";
         String actual = calc.readScreen();
 
