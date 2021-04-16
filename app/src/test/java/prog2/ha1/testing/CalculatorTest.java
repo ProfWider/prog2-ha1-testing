@@ -70,6 +70,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after calculating the squareroot of a positive number")
+    void testSquareRootCalculation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("√");
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     //TODO hier weitere Tests erstellen
 }
 
