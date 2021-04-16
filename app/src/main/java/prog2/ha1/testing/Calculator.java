@@ -9,6 +9,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    public int multipleOperations = 0;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -30,13 +32,34 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        multipleOperations = 0;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if(multipleOperations > 0){
+            calculateMultipleOperations();
+        }
         latestOperation = operation;
+        multipleOperations++;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        if(multipleOperations > 0){
+            calculateMultipleOperations();
+        }
+
+        multipleOperations++;
+    }
+
+    public void calculateMultipleOperations(){
+        var result = switch(latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
 
     }
 
