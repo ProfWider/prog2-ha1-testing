@@ -21,9 +21,14 @@ public class Calculator {
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
-        }
+
+            if (latestValue==0) {
+                latestValue = Double.parseDouble(screen);
+                screen = Integer.toString(digit);
+            } else {
+                    screen = screen + digit;
+              }
+          }
     }
 
     public void pressClearKey() { // die Taste CE
