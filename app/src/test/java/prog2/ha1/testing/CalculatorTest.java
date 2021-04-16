@@ -36,6 +36,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display 1 from the division of two equal numbers")
     void testDivisonTwoEqualNumbers() {
@@ -49,5 +50,25 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display 7 for the sqrt of 49 (Two Digits)")
+    void testSqrt() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(49);
+        calc.pressUnaryOperationKey("sqr");
+        String expected = "7.0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display 0.1 for the 1/10")
+    void testOneDivideByX() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.2";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
