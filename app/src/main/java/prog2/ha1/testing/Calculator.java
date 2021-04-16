@@ -13,17 +13,19 @@ public class Calculator {
         return screen;
     }
 
+//############################################
 
     /**
      * it specifies the entered numbers (input) in the calculator
-     * @param digit  represent the entered number (input)
+     *
+     * @param digit represent the entered number (input)
      */
-    public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+    public void pressDigitKey(int digit) { // also die Tasten (-9 - 9)
+        if (digit > 9 || digit < -9) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = ""; //if nothing no number added console stays empty
+        if (screen.equals("0")) screen = ""; //if nothing no number added console stays empty
 
-        if(latestOperation.isEmpty()) {     // if the second number not added console shows just the first number
+        if (latestOperation.isEmpty()) {     // if the second number not added console shows just the first number
             screen = screen + digit;
 
         } else {                            //convert to string
@@ -31,7 +33,8 @@ public class Calculator {
             screen = Integer.toString(digit);
         }
     }
-    //*********************************************************************************
+//######################################################
+
 
     /**
      * reset the calculator
@@ -42,54 +45,88 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+
+//#####################################################
+
     /**
-     * defines the the operations
+     * defines the the operations to a variable
+     *
      * @param operation represent the operation symbols
      */
-    public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+    public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
-
-
-// my fix
-public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-    latestOperation = operation;
-    latestValue = Double.parseDouble(screen);
-    var result = switch(latestOperation) {
-
-        case "%" -> latestValue /100;
-
-        default -> throw new IllegalArgumentException();
-    };
-    screen = Double.toString(result);
-    if(screen.endsWith(".0")) screen = screen.substring(0,screen.length());
-
-    }
-
-
-
-    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
-    }
-
-    public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
-    }
+//#####################################################
 
     /**
-     * defines the calculation process
+     * makes the unary operations possibole after pressing one of them
+     *
+     * @param operation the value of the variable
      */
-    public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        latestOperation = operation;
+        latestValue = Double.parseDouble(screen);
+        var result = switch (latestOperation) {
+
+            case "%" -> latestValue / 100;
+            case "Wurzel" -> Math.sqrt(latestValue);
+            case "1/x" -> 1 / latestValue;
+
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length());
+
+
+    }
+//########################################################
+
+    /**
+     *adds a catastrophe to the console when pressed
+     */
+
+    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+        if (!screen.endsWith(".")) screen = screen + ".";
     }
 
+//#######################################################
 
-}
+    /**
+     *Switchs the number from positive to negative when pressing the following operation
+     * @param operation  represent the operation symbols
+     */
+    public void pressNegativeKey(String operation) { // die +/- Taste
+
+
+    }
+
+//######################################################
+
+        /**
+         * defines the calculation process
+         */
+        public void pressEqualsKey () { // die Taste =
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(result);
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        }
+
+
+    }
+//#########################################################
+//#######################################################
+//#####################################################
+//###################################################
+//###############################################
+//###########################################
+//#######################################
+//####################################
+//################################
+//#############################
+//##########################

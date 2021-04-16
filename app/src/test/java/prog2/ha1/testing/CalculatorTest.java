@@ -39,8 +39,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
-    //Teilaufgabe 1: Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht
-    // getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
+
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
     void testPositiveMultiplying() {
@@ -52,6 +51,21 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after adding two nigative numbers")
+    void testNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(-2);
+        calc.pressEqualsKey();
+
+        String expected = "-4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -87,5 +101,65 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after Dividing the numbber one on Variable)")
+    void testOneDvisionVariable() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after calculating the square roots of a numbber")
+    void testWurzelZiehen() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("Wurzel");
+
+
+        String expected = "3.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+//
+
+    @Test
+    @DisplayName("should reset the konsole")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressClearKey();
+
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should switch result Positive to Negative ")
+    void testSwitchtoNegative() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressNegativeKey("+/-");
+
+        String expected = "-9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
 
