@@ -38,5 +38,71 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should delete input and display the number 0 after pressing the clear button")
+    void calculatorCanClearResult() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
+        assertEquals("0", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should display result after pressing the percentage button ")
+    void calculatorCanPercentage() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        assertEquals("0.8", calc.readScreen());
+
+    }
+    
+
+    @Test
+    @DisplayName("should display result after adding floating-point numbers")
+    void calculatorCanHandleDots() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("13.57", calc.readScreen());
+    }
+
+
+    @Test
+    @DisplayName("should display result after adding other floating-point numbers")
+    void calculatorCanHandleDotsOneMoreTime() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+        assertEquals("49.88", calc.readScreen());
+    }
+
+
+
 }
 

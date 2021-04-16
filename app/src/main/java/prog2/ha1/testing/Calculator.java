@@ -21,9 +21,14 @@ public class Calculator {
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
-        }
+
+            if (latestValue==0) {
+                latestValue = Double.parseDouble(screen);
+                screen = Integer.toString(digit);
+            } else {
+                    screen = screen + digit;
+              }
+          }
     }
 
     public void pressClearKey() { // die Taste CE
@@ -38,6 +43,13 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        // inspired by https://www.heise.de/tipps-tricks/Java-Strings-in-Integer-umwandeln-4060398.html
+        // (and I replaced "Integer" by "Double")
+        if(operation == "%"){
+            Double doubleNumber = (Double.parseDouble(screen) / 100);
+            screen = Double.toString(doubleNumber);
+            readScreen();
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -58,5 +70,10 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if(screen.contains(".")) {
+            Double roundingDouble = Double.parseDouble(screen);
+            roundingDouble = (Math.round(roundingDouble*100) / 100.0);
+            screen = Double.toString(roundingDouble);
+        }
     }
 }
