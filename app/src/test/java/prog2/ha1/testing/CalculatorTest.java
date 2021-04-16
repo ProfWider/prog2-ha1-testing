@@ -51,7 +51,17 @@ class CalculatorTest {
         assertEquals("0", calc.readScreen());
     }
 
+    @Test
+    @DisplayName("new Test")
+    void testingSomething() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
 
+        assertEquals("0.8", calc.readScreen());
+
+    }
 
 
 }
