@@ -37,7 +37,14 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    
+    @Test
+    @DisplayName("Should throw IllegalArgumentException")
+    void testIllegalArgumentException(){
+        Calculator calc = new Calculator();
+
+        assertThrows(IllegalArgumentException.class,()->calc.pressDigitKey(14));
+    }
+
     //TODO hier weitere Tests erstellen
 }
 
