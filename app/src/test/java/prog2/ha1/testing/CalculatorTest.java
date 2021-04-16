@@ -38,5 +38,21 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display a decimal number with a dot in between")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
+
+        String expected ="1.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
 
