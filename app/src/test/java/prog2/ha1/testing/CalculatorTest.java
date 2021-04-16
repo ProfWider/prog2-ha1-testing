@@ -38,5 +38,43 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after dividing two numbers")
+    void testDividing(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    @DisplayName("should display result after subtracting two numbers")
+    void testsubtraction(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey(-);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "410";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
 }
 
