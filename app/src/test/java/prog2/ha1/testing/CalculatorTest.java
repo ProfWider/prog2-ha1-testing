@@ -49,8 +49,22 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String actual = calc.readScreen();
-        String expect = "-4";
-        assertEquals(expect, actual);
+        String expected = "-4";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after square one positive number")
+    void testSquare(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
+
+        String actual = calc.readScreen();
+        String expected = "3";
+        assertEquals(expected, actual);
+
     }
 }
 
