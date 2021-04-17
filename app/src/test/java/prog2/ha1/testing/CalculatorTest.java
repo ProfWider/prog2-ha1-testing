@@ -77,7 +77,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(144);
         calc.pressUnaryOperationKey("root");
-        String expected = "12";
+        String expected = "12.0";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }

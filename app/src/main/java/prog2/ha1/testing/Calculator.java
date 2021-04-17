@@ -1,5 +1,5 @@
 package prog2.ha1.testing;
-
+import java.lang.Math;
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -37,6 +37,13 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        latestOperation = operation;
+        var result = switch(latestOperation) {
+            case "root" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        };
+
+        screen = Double.toString(result);
 
     }
 
