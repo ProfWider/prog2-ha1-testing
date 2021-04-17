@@ -13,20 +13,32 @@ public class Calculator {
         return screen;
     }
 
-    public void pressDigitKey(int digit) { // also die Tasten 0-9
+    //Eigene Operation
+    public double readlv(){return latestValue; }
+    public String readlO(){return latestOperation; }
+
+    public void pressDigitKey(int digit)
+    {
+        // also die Tasten 0-9
+
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if(latestOperation.isEmpty())
+        {
             screen = screen + digit;
-        } else {
+        }
+        else
+        {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
     }
 
-    public void pressClearKey() { // die Taste CE
+    public void pressClearKey()
+    {
+        // die Taste CE
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
@@ -40,9 +52,12 @@ public class Calculator {
 
     }
 
-    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+    public void pressDotKey()
+    { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
-    }
+    } //Wenn Screen bereits einen Punkt am Ende hat, dann darf kein weiterer Punkt gesetzt werden
+
+
 
     public void pressNegativeKey() { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;

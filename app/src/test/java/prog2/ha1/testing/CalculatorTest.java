@@ -38,5 +38,28 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Should clear all the values and display 0 at the end")
+    void testpressClearKey()
+    {
+        Calculator calc = new Calculator();
+        //Beispielwerte
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        calc.pressClearKey();
+        String expected1 = "0"; //Screen
+        double expected2 = 0.0; //LatestValue
+        String expected3 = ""; //LatestOperation
+        String actual1 = calc.readScreen();
+        double actual2 = calc.readlv();
+        String actual3 = calc.readlO();
+
+        assertEquals(expected1, actual1);
+        assertEquals(expected2, actual2);
+        assertEquals(expected3, actual3);
+    }
 }
 
