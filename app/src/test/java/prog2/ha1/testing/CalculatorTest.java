@@ -61,5 +61,28 @@ class CalculatorTest {
         assertEquals(expected2, actual2);
         assertEquals(expected3, actual3);
     }
+
+    @Test
+    @DisplayName("Should put a point after the number and not allow for any more points")
+    void testpressDotKey()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(9);
+
+        String expected = "7.99";
+
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+
+
+    }
 }
 
