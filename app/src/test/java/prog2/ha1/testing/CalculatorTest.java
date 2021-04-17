@@ -37,6 +37,18 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display 0 as only equals button was pressed")
+    void testNoInput() {
+        Calculator calc = new Calculator();
+
+        calc.pressEqualsKey();
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     //TODO hier weitere Tests erstellen
 }
 
