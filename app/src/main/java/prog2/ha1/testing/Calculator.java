@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+//        zeile 17 gelöscht test2
 
         if(screen.equals("0")) screen = "";
 
