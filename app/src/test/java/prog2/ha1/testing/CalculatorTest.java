@@ -54,8 +54,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after square one positive number")
-    void testSquare(){
+    @DisplayName("should display result after square root one positive number")
+    void testSquareRoot(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
