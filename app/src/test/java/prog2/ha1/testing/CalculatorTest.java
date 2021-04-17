@@ -38,6 +38,20 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should display result of positive number divided by 100")
+    void testPercent() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.06";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("should display result after multiplying two positive numbers")
     void testPositveMultiplication() {
         Calculator calc = new Calculator();
