@@ -53,6 +53,24 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("das Ergebnis von 30 mal 20 macht 600 ")
+    void test2Zahlen() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(30);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(20);
+        calc.pressEqualsKey();
+
+        String expected = "600";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
 
 
