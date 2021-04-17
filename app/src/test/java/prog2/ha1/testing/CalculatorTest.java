@@ -38,12 +38,16 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display 0 as only equals button was pressed")
-    void testNoInput() {
+    @DisplayName("should display result after multiplying two positive numbers")
+    void testPositveMultiplication() {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
-        String expected = "0";
+
+        String expected = "9";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
