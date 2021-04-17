@@ -69,5 +69,18 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("%");
         assertEquals("0.1", calc.readScreen());
     }
+
+    @Test
+    @DisplayName("Should continue binary Operation, after pressing UnaryOperationKey")
+    void testBinaryAfterUnary(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+        calc.pressEqualsKey();
+        assertEquals("5.1", calc.readScreen());
+    }
 }
 
