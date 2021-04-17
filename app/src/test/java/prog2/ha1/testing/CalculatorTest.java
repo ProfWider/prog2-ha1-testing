@@ -70,7 +70,17 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("das Ergebnis von Wurzel 144 ist 12")
+    void test3Root() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(144);
+        calc.pressUnaryOperationKey("root");
+        String expected = "12";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
 
