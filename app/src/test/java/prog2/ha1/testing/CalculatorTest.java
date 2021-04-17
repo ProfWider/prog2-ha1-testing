@@ -60,6 +60,14 @@ class CalculatorTest {
         assertEquals("3", calc.readScreen());
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display percentage value of pressed digit")
+    void testPercentageKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+        assertEquals("0.1", calc.readScreen());
+    }
 }
 
