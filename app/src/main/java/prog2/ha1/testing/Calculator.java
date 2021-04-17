@@ -33,6 +33,9 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if(latestValue != 0.0){
+            pressEqualsKey();
+        }
         latestOperation = operation;
     }
 
@@ -47,6 +50,8 @@ public class Calculator {
     public void pressNegativeKey() { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
+
+
 
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {

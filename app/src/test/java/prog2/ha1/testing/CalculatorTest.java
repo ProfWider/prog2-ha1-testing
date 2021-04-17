@@ -46,7 +46,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("should display correct result after doing multiple operations")
     void testMultipleOperations(){
         Calculator calc = new Calculator();
 
@@ -54,6 +54,7 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("-");
+        assertEquals("10", calc.readScreen());
         calc.pressDigitKey(7);
         calc.pressEqualsKey();
         assertEquals("3", calc.readScreen());
