@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,5 +67,42 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+    @Test
+    @DisplayName("continually do another binary operation without pressing equal key (to save result to screen)")
+    void testContinuePressing(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String actual = calc.readScreen();
+        String expected = "7";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("press continually from the previous test without pressing equal key (to save result to screen)")
+    void testContinuePressing1(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("√");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String actual = calc.readScreen();
+        String expected = "10";
+        assertEquals(expected, actual);
+    }
+
+
+
+
 }
 
