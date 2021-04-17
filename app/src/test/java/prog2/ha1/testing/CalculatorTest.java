@@ -86,7 +86,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display 0 when no other input")
+    @DisplayName("should display 0 when equal key is pressed with no other input")
     void testNoInputEquals0() {
         Calculator calc = new Calculator();
 
