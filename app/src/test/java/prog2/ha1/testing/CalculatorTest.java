@@ -86,11 +86,21 @@ class CalculatorTest {
     @DisplayName("Should change the value of the current screen number according to input")
     void testpressUnaryOperationKey()
     {
+        String input = "k3";
+        String expected = "7.0";
         Calculator calc = new Calculator();
         calc.pressDigitKey(4);
         calc.pressDigitKey(9);
-        calc.pressUnaryOperationKey("k1"); //Platzhalter fuer den Wurzel key
-        String expected = "7";
+        calc.pressUnaryOperationKey(input); //Platzhalter fuer den Wurzel key
+        switch(input)
+        {
+            case "k1": { expected = "7.0";   break;}
+            case "k2": { expected = "0.49";   break;}
+            case "k3": { expected = "0.02040816326530612"; break;}
+        }
+        //String expected = "7.0";
+
+
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
