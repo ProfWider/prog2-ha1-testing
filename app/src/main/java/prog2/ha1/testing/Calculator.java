@@ -11,6 +11,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -53,19 +54,23 @@ public class Calculator {
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+//        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if (screen.startsWith("-")){
+            screen = screen.substring(1);
+        }else {
+            screen = screen.startsWith("0")? "-" + screen.substring(1) : "-" + screen;
+        }
     }
 
     public double sqrt() {
         return Math.sqrt(Double.parseDouble(screen));
-
     }
 
     public double calculatingPercent() {
         double number = Double.parseDouble(screen);
         double result = number / 100;
         return result;
-
     }
 
     public void pressEqualsKey() { // die Taste =

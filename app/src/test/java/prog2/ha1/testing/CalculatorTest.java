@@ -39,6 +39,21 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should display 0 after pressing Clear-Key (CE)")
+    void testPressingClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("should display result after subtracting two positive numbers")
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
@@ -79,6 +94,22 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("%");
 
         String expected = "0.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should change the algebraic sign of a number")
+    void testChangingAlgebraicSign() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressNegativeKey();
+
+        String expected = "10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
