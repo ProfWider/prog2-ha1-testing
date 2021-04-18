@@ -1,6 +1,8 @@
 package prog2.ha1.testing;
 
-// behaviour inspired by https://www.online-calculator.com/
+/** behaviour inspired by https://www.online-calculator.com/
+ * @author Jonas Render, Matrikelnummer: 577983
+ */
 public class Calculator {
 
     private String screen = "0";
