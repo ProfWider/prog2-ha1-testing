@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,7 +54,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Test")
+    @DisplayName("should display negative number after pressing minus")
     void testNegativeKey() {
         Calculator calc = new Calculator();
 
@@ -66,6 +67,19 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after pressing %")
+    void testPercentageKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.05";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
     //TODO hier weitere Tests erstellen
 }
