@@ -40,7 +40,7 @@ public class Calculator {
         var result = switch(operation) {
 
             case "1/x" -> divideByX();
-            case "%" -> percantage();
+            case "%" -> percentage();
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
@@ -53,7 +53,7 @@ public class Calculator {
         var a = 1/x;
         return a;
     }
-    public double percantage(){
+    public double percentage(){
         var x = Double.parseDouble(screen);
         var a = x/100;
         return a;
@@ -64,19 +64,23 @@ public class Calculator {
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if(screen.startsWith("-")){
+            screen = "-".substring(1) + screen;
+        }else{
+            screen = "-" + screen;
+        }
     }
 
     public void pressEqualsKey() { // die Taste =
 
 
         var result = switch(latestOperation) {
-            
+
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
