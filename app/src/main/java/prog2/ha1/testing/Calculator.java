@@ -54,7 +54,8 @@ public class Calculator {
 
     public void pressDotKey()
     { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        //if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + "."; //es prueft generell ob ein Punkt enthalten ist und wenn dem so ist koennen keine weiteren hinzugefuegt werden, anstatt einfach nur auf das Ende zu pruefen
     } //Wenn Screen bereits einen Punkt am Ende hat, dann darf kein weiterer Punkt gesetzt werden
 
 
