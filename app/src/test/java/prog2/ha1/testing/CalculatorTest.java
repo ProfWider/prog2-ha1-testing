@@ -76,5 +76,19 @@ class CalculatorTest {
         assertEquals(expected2, actual2);
         assertEquals(expected3, actual3);
     }
+
+    @Test
+    @DisplayName("should display result after making division by 1 with X ")
+    void testOneDivisionWithX() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
