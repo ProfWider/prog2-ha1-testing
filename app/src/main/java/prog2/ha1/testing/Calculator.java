@@ -1,5 +1,7 @@
 package prog2.ha1.testing;
 
+import java.lang.Math;
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -9,16 +11,17 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if (digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+        if (screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if (latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
@@ -32,24 +35,46 @@ public class Calculator {
         latestValue = 0.0;
     }
 
-    public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+    public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch (operation) {
+            case "√" -> sqrt();
+            case "%" -> calculatingPercent();
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if (!screen.endsWith(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+//        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if (screen.startsWith("-")){
+            screen = screen.substring(1);
+        }else {
+            screen = screen.startsWith("0")? "-" + screen.substring(1) : "-" + screen;
+        }
+    }
+
+    public double sqrt() {
+        return Math.sqrt(Double.parseDouble(screen));
+    }
+
+    public double calculatingPercent() {
+        double number = Double.parseDouble(screen);
+        double result = number / 100;
+        return result;
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
+        var result = switch (latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
@@ -57,6 +82,7 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
     }
+
 }
