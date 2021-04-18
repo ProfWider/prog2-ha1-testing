@@ -80,7 +80,5 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
-    //TODO hier weitere Tests erstellen
 }
 
