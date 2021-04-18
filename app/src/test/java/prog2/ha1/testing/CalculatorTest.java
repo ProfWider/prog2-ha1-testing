@@ -53,5 +53,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after adding two positive numbers")
+    void testMathRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(49);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
