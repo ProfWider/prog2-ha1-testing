@@ -7,6 +7,8 @@ public class Calculator {
 
     private double latestValue;
 
+    private double xValue = 1;
+
     private String latestOperation = "";
 
     public double getLatestValue() {
@@ -16,6 +18,7 @@ public class Calculator {
     public String getLatestOperation() {
         return latestOperation;
     }
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -44,7 +47,12 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch(operation) {
+            case "1/x" ->  xValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
 
+        screen = Double.toString(result);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
