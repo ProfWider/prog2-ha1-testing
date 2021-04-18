@@ -54,6 +54,27 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should test the pressed key CE")
+    void testPressClearKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
 
+        String expected = "0";
+        String expected2 = "";
+        Double expected3 = 0.0;
+
+        String actual = calc.readScreen();
+        String actual2 = calc.getLatestOperation();
+        Double actual3 = calc.getLatestValue();
+
+        assertEquals(expected, actual);
+        assertEquals(expected2, actual2);
+        assertEquals(expected3, actual3);
+    }
 }
 

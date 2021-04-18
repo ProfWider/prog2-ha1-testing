@@ -9,6 +9,13 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    public double getLatestValue() {
+        return latestValue;
+    }
+
+    public String getLatestOperation() {
+        return latestOperation;
+    }
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
