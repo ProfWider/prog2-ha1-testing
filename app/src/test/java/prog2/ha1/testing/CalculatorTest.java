@@ -53,6 +53,37 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after subtraction of two negative numbers")
+    void testNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(-5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(-8);
+        calc.pressEqualsKey();
+
+        String expected = "-13";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding two decimal numbers")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5.5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3.5);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
     //TODO hier weitere Tests erstellen
 }
