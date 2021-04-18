@@ -38,5 +38,22 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after subtracting two postive numbers")
+    void testPostiveSubtraction(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
