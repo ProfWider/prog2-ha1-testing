@@ -2,6 +2,7 @@ package prog2.ha1.testing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
@@ -38,5 +39,31 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should reset all values")
+    void testClearKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressClearKey();
+
+        String expectedScreen = "0";
+        String expectedLatestOperation = "";
+        double expectedLatestValue = 0.0;
+
+        String actualScreen = calc.readScreen();
+        String actualLatestOperation = calc.getLatestOperation();
+        double actualLatestValue = calc.getLatestValue();
+
+        assertEquals(expectedScreen, actualScreen);
+        assertEquals(expectedLatestOperation, actualLatestOperation);
+        assertEquals(expectedLatestValue, actualLatestValue);
+    }
+
 }
+
+
+
 

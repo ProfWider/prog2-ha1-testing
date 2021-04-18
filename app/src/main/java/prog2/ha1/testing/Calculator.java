@@ -13,6 +13,14 @@ public class Calculator {
         return screen;
     }
 
+    public double getLatestValue() {
+        return latestValue;
+    }
+
+    public String getLatestOperation() {
+        return latestOperation;
+    }
+
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
@@ -44,9 +52,7 @@ public class Calculator {
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
-    public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
-    }
+    public void pressNegativeKey() { screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;} // die +/- Taste
 
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {
