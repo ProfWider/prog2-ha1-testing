@@ -38,5 +38,39 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after multiply one positive and one negative number")
+    void calculatorCanDoMultiplyTwo() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        assertEquals("-50", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should display the number after using clear key")
+    void calculatorCanShowNumberAfterUsingClearKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        assertEquals("2", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should display result after using square root for a number")
+    void calculatorCanDoSquareRoot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("wurzel");
+        assertEquals("2.0", calc.readScreen());
+    }
 }
 
