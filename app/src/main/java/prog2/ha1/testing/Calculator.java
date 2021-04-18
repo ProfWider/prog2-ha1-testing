@@ -1,6 +1,8 @@
 package prog2.ha1.testing;
 
-// behaviour inspired by https://www.online-calculator.com/
+/** behaviour inspired by https://www.online-calculator.com/
+ * @author Jonas Render, Matrikelnummer: 577983
+ */
 public class Calculator {
 
     private String screen = "0";
@@ -17,6 +19,8 @@ public class Calculator {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
+
+        if (screen.equals("-0")) screen = "-";
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -38,6 +42,9 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        if (operation.equals("%")) {
+            screen = Double.toString(Double.parseDouble(screen)/100);
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
