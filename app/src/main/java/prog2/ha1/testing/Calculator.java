@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(digit > 50 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
 
@@ -37,8 +37,13 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestValue = Double.parseDouble(screen);
+        if (operation == "√"){
+          int root = (int) Math.sqrt(latestValue);
+            screen = Integer.toString(root);
+        }
     }
+
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
