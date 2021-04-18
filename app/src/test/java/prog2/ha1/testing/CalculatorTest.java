@@ -78,12 +78,12 @@ class CalculatorTest {
     void testRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(4);
         calc.pressUnaryOperationKey("V");
        // calc.pressDigitKey();
         calc.pressEqualsKey();
 
-        String expected = "3";
+        String expected = "2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
