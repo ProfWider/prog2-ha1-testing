@@ -63,5 +63,14 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("2", calc.readScreen());
     }
+
+    @Test
+    @DisplayName("should display result after using square root for a number")
+    void calculatorCanDoSquareRoot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("wurzel");
+        assertEquals("2.0", calc.readScreen());
+    }
 }
 
