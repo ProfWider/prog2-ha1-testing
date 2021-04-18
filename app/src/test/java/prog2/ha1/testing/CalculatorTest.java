@@ -51,5 +51,17 @@ class CalculatorTest {
         assertEquals("-50", calc.readScreen());
     }
 
+    @Test
+    @DisplayName("should display the number after using clear key")
+    void calculatorCanShowNumberAfterUsingClearKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        assertEquals("2", calc.readScreen());
+    }
 }
 
