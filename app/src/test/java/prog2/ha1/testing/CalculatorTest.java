@@ -37,6 +37,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should dispylay a dot after pressing dot button")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+
+        String expected = "4.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
     //TODO hier weitere Tests erstellen
 }
 
