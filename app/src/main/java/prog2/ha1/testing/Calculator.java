@@ -37,7 +37,22 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        double i;
+        if (operation.equals("wurzel")) {
+            i = Double.parseDouble(screen);
+            screen = String.valueOf(Math.sqrt(i));
 
+        } else if (operation.equals("%")) {
+            i = Double.parseDouble(screen);
+            screen = String.valueOf(i*0.01);
+
+        } else if (operation.equals("1/x")) {
+            i = Double.parseDouble(screen);
+            screen = String.valueOf(1/i);
+
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
