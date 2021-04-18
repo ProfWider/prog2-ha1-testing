@@ -62,12 +62,12 @@ class CalculatorTest {
     void testPercentage() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(8);
         calc.pressUnaryOperationKey("%");
-        // calc.pressDigitKey();
+        //calc.pressDigitKey();
         calc.pressEqualsKey();
 
-        String expected = "0,05";
+        String expected = "0.08";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -78,12 +78,12 @@ class CalculatorTest {
     void testRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("V");
        // calc.pressDigitKey();
         calc.pressEqualsKey();
 
-        String expected = "2";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
