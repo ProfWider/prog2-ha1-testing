@@ -56,7 +56,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after pressing 1/x key")
-    void test() {
+    void testUnaryOperationKey() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
