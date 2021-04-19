@@ -33,10 +33,22 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
+        //latestOperation = operation;
+
+        if(latestOperation.isEmpty()) {
+            latestOperation = operation;
+        } else {
+            pressEqualsKey();
+            latestOperation = operation;
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        double result = 0;
+        if(operation.equals("1/x")) {
+            result = 1 / Double.parseDouble(screen);
+        }
+        screen = Double.toString(result);
 
     }
 
