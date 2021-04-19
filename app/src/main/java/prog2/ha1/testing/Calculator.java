@@ -1,4 +1,5 @@
 package prog2.ha1.testing;
+import java.lang.Math;
 
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
@@ -8,16 +9,16 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+    private boolean isNegativ = false;
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
+       if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(isNegativ)screen = '-'+screen;
         if(screen.equals("0")) screen = "";
-
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
@@ -37,6 +38,12 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch(operation) {
+            case "sqr" -> Math.sqrt(Double.parseDouble(screen));
+            case "1/x" -> 1 / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
 
     }
 
@@ -46,6 +53,7 @@ public class Calculator {
 
     public void pressNegativeKey() { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        isNegativ = true;
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -59,4 +67,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
+
 }

@@ -36,7 +36,42 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display 1 from the division of two equal numbers")
+    void testDivisonTwoEqualNumbers() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(6);
+        calc.pressEqualsKey();
+        String expected = "1";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display -3 for the 2+(-5)")
+    void testNegativeNumbers() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+        String expected = "-3";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display 0.1 for the 1/10")
+    void testOneDivideByX() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.2";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
