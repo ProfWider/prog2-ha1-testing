@@ -38,5 +38,54 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display negative result after subtracting from negative number")
+    void testNegativeNumberSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "-17";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display negative number after pressing negative key and digit")
+    void testNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
+
+        String expected = "-21";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display correct result after adding multiple digit numbers")
+    void testAdditionBigNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "29";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
