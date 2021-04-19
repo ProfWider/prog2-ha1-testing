@@ -10,11 +10,14 @@ public class Calculator {
     private String latestOperation = "";
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
+        if(screen.equals("-0")) screen = "0";
         return screen;
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+
+        if(screen.equals("-0")) screen = "-";
 
         if(screen.equals("0")) screen = "";
 

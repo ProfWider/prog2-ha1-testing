@@ -57,7 +57,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display negative number after pressing negative key and digit but result starts with '-0'")
+    @DisplayName("should display negative number after pressing negative key and digit")
     void testNegativeNumber() {
         Calculator calc = new Calculator();
 
