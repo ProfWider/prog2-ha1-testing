@@ -33,7 +33,14 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
+        //latestOperation = operation;
+
+        if(latestOperation.isEmpty()) {
+            latestOperation = operation;
+        } else {
+            pressEqualsKey();
+            latestOperation = operation;
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
