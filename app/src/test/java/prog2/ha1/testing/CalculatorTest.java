@@ -50,5 +50,29 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("-15", calc.readScreen());
     }
+
+    //test case two
+    @Test
+    @DisplayName("should return a result for operations on digits greater 9")
+    void calculatorOperationsOnDigitsGreaterNine() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(16);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(16);
+        calc.pressEqualsKey();
+        assertEquals("256", calc.readScreen());
+    }
+
+    //test case three
+    @Test
+    @DisplayName("should return a decimal number on display")
+    void calculatorCanDoDecimal() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("5.3", calc.readScreen());
+    }
 }
 
