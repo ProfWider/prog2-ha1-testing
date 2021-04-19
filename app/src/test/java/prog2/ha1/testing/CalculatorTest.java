@@ -55,7 +55,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after converting into percentage")
-    void testPercentageConvertion() {
+    void testPercentageConversion() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
