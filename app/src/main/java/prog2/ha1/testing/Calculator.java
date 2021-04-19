@@ -48,14 +48,24 @@ public class Calculator {
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
-    public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
+    public void pressEqualsKey() {
+        double result;
+        switch (latestOperation) {
+            case "+":
+                result = latestValue + Double.parseDouble(screen);
+                break;
+            case "-":
+                result = latestValue - Double.parseDouble(screen);
+                break;
+            case "x":
+                result = latestValue * Double.parseDouble(screen);
+                break;
+            case "/":
+                result = latestValue / Double.parseDouble(screen);
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }

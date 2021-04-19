@@ -38,5 +38,17 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+//test one
+    @Test
+    @DisplayName("should display result after multiplying a positive with a negative number")
+    void calculatorCanDoFiveMultiplyingThree() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("-15", calc.readScreen());
+    }
 }
 
