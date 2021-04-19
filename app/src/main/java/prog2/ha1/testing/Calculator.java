@@ -4,8 +4,10 @@ package prog2.ha1.testing;
 public class Calculator {
 
     private String screen = "0";
+    private String temp = "";
 
     private double latestValue;
+    private double firstValue;
 
     private String latestOperation = "";
 
@@ -23,9 +25,10 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
+            firstValue = Double.parseDouble(screen);
         } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+            latestValue = firstValue;
+            temp = temp + digit;
         }
     }
 
@@ -53,10 +56,10 @@ public class Calculator {
 
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "+" -> latestValue + Double.parseDouble(temp);
+            case "-" -> latestValue - Double.parseDouble(temp);
+            case "x" -> latestValue * Double.parseDouble(temp);
+            case "/" -> latestValue / Double.parseDouble(temp);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
