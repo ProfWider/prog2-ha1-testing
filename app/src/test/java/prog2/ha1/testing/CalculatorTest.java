@@ -51,12 +51,15 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display 7 for the sqrt of 49 (Two Digits)")
-    void testSqrt() {
+    @DisplayName("should display -3 for the 2+(-5)")
+    void testNegativeNumbers() {
         Calculator calc = new Calculator();
-        calc.pressDigitKey(49);
-        calc.pressUnaryOperationKey("sqr");
-        String expected = "7.0";
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+        String expected = "-3";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }

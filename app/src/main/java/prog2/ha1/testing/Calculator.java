@@ -9,13 +9,15 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+    private boolean isNegativ = false;
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        //if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+       if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(isNegativ)screen = '-'+screen;
         if(screen.equals("0")) screen = "";
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -51,6 +53,7 @@ public class Calculator {
 
     public void pressNegativeKey() { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        isNegativ = true;
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -64,5 +67,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 
 }
