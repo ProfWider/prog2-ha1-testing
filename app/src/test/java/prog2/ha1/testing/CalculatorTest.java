@@ -54,5 +54,26 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    @DisplayName("checks the change of the sign before a decimal number")
+
+    void testSignChange() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(7);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+
+        String expected ="7.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+
 }
 
