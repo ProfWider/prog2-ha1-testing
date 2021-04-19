@@ -57,7 +57,6 @@ class CalculatorTest {
 
     @Test
     @DisplayName("checks the change of the sign before a decimal number")
-
     void testSignChange() {
         Calculator calc = new Calculator();
 
@@ -74,7 +73,24 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should clear the initial input and then extract a square root of the new passed number")
+    void testClearAndSquareRoot () {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressClearKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected ="5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 }
 
