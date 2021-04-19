@@ -1,3 +1,8 @@
+# Notizen: 
+Commit 2 wurde aus irgendwelchem Grund nicht gepusht, weswegen ich Commit zwei nochmal gepusht habe :) 
+
+
+
 # Hausaufgabe 1
 
 Deadline für Abgabe per Pull Request: 25.4.2021 23:59 Uhr.
