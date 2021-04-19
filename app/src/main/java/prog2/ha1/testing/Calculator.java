@@ -38,6 +38,15 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        var result = switch (operation) {
+            case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
+            case "%" -> Double.parseDouble(screen) / 100;
+            case "1/x" -> 1 / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
