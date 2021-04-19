@@ -45,7 +45,10 @@ public class Calculator {
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
+        if(screen.startsWith("-")) screen = screen.substring(1);
+        else if(screen.startsWith("0")) screen = "-" + screen.substring(1);
+        else screen = "-" + screen;
     }
 
     public void pressEqualsKey() { // die Taste =
