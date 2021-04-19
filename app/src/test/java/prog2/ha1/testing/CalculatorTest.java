@@ -38,5 +38,56 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after deduct two positive numbers")
+    void testPositive1(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "3.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the square root of a positive two-figured number")
+    void testNegative2(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the result after adding two fractures.")
+    void testNegative3(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("fract");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("fract");
+        calc.pressEqualsKey();
+
+        String expected = "0.75";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
