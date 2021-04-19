@@ -55,5 +55,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display negative number after pressing negative key and digit but result starts with '-0'")
+    void testNegativeNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
+
+        String expected = "-21";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
