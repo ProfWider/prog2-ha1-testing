@@ -26,12 +26,12 @@ class CalculatorTest {
     void testPositiveAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "4";
+        String expected = "2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -41,14 +41,14 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after dividing two numbers")
-    void testDividing(){
+    void testDividing() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(2.5);
         calc.pressEqualsKey();
 
-        String expected = "3";
+        String expected = "2.4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -56,25 +56,29 @@ class CalculatorTest {
 
     }
 
-    @Test
-    @DisplayName("should display result after subtracting two numbers")
-    void testsubtraction(){
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(8);
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(0);
-        calc.pressBinaryOperationKey(-);
-        calc.pressDigitKey(4);
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
-        calc.pressEqualsKey();
+   // @Test
+  //  @DisplayName("should display result after subtracting two numbers")
+   // void testsubtraction(){
+   //   Calculator calc = new Calculator();
+  //   calc.pressDigitKey(8);
+  //  calc.pressDigitKey(1);
+  //  calc.pressDigitKey(0);
+  //  calc.pressBinaryOperationKey("-");
+  //  calc.pressDigitKey(4);
+  //  calc.pressDigitKey(0);
+  //  calc.pressDigitKey(0);
+  //  calc.pressEqualsKey();
 
-        String expected = "410";
-        String actual = calc.readScreen();
+  //    String expected = "410";
+  //    String actual = calc.readScreen();
 
-        assertEquals(expected, actual);
+  //  assertEquals(expected, actual);
 
-    }
-
+  //  }
 }
+
+
+
+
+
 
