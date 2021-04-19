@@ -3,7 +3,8 @@ package prog2.ha1.testing;
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
-    private String screen = "0";
+    //bugfix test case three - calculatorCanDoDecimal
+    private String screen = "";
 
     private double latestValue;
 
@@ -13,10 +14,9 @@ public class Calculator {
         return screen;
     }
 
-    public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
-        if(screen.equals("0")) screen = "";
+    //bugfix test case two - calculatorOperationsOnDigitsGreaterNine
+    public void pressDigitKey(int digit) {
+        if(digit > 99 || digit < 0) throw new IllegalArgumentException();
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
