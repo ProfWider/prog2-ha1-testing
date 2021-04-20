@@ -55,5 +55,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display a point number with one dot, when two periods are typed")
+    void testPressDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+
+        String expected = "3.44";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
