@@ -72,7 +72,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Should display 'ERROR' after attempting to divide a number by Zero.")
+    @DisplayName("Should display result after calculating the square root of a number.")
     void testSqrt(){
         Calculator calc = new Calculator();
 
