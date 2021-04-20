@@ -38,5 +38,67 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after multiplying two positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "15";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after pressing %")
+    void testUnaryOperationKey1() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("%");
+
+
+        String expected = "0.09";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after pressing √")
+    void testUnaryOperationKey2() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "4.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display Error after attempting Division by zero")
+    void testDivisionbyZero(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
+
 
