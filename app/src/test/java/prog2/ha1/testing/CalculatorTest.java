@@ -39,6 +39,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
+    // Grüner Test
     @Test
     @DisplayName("should display a dot between two numbers")
     void testDotInput() {
@@ -49,6 +50,21 @@ class CalculatorTest {
         calc.pressDigitKey(2);
 
         String expected = "4.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // 1. Roter Test
+    @Test
+    @DisplayName("should display correct number after percentage calculation")
+    void testPercentageCalculation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(700);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "7";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
