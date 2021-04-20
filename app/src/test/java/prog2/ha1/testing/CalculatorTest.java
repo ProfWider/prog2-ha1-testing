@@ -80,7 +80,9 @@ class CalculatorTest {
     void testPercentageCalculation() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(700);
+        calc.pressDigitKey(7);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("%");
 
         String expected = "7";
