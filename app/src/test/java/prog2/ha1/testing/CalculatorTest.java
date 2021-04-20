@@ -59,7 +59,29 @@ class CalculatorTest {
 
 
 
+    @Test
+    @DisplayName("should display result after dividing a number with zero")
+
+    void testdivision(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+
+
+
+
+    }
+
 
 
 }
-
