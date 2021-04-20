@@ -37,5 +37,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after calculating square root")
+    void testSquareRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+
+        calc.pressUnaryOperationKey("√");
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
