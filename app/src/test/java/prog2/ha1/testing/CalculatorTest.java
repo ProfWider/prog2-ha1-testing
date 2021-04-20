@@ -55,6 +55,25 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // 2. Grüner Test
+    @Test
+    @DisplayName("should display a negative number")
+    void testNegativeKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
     // 1. Roter Test
     @Test
     @DisplayName("should display correct number after percentage calculation")
@@ -65,6 +84,30 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("%");
 
         String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    // 2. Roter Test
+    @Test
+    @DisplayName("should display correct number")
+    void testDoubleAddition() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+
+        String expected = "4.4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
