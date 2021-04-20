@@ -37,7 +37,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
 
     // Grüner Test
     @Test
@@ -94,7 +93,7 @@ class CalculatorTest {
 
     // 2. Roter Test
     @Test
-    @DisplayName("should display correct number")
+    @DisplayName("should display correct number after addition with double values")
     void testDoubleAddition() {
         Calculator calc = new Calculator();
 

@@ -21,6 +21,9 @@ public class Calculator {
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         }
+        else if(screen.endsWith(".")){
+            screen += digit;
+        }
         else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
@@ -40,9 +43,6 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         var result = switch(operation) {
             case "%" -> Double.parseDouble(screen) / 100;
-            case "1/x" -> latestValue - Double.parseDouble(screen);
-            //TODO wurzel symbol überprüfen
-            case "Wurzel" -> latestValue * Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
