@@ -56,7 +56,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after dividing a number by X")
-    void testDevidingByX() {
+    void testDividingByX() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
@@ -70,7 +70,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display the percentage of the number")
-    void testModulo() {
+    void testPercentage() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(1);
@@ -79,6 +79,24 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("%");
 
         String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("sum up 3 numbers")
+    void testBinaryKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

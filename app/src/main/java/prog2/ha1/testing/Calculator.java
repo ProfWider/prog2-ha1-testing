@@ -9,6 +9,7 @@ public class Calculator {
 
     private String latestOperation = "";
 
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -33,8 +34,17 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
+    latestOperation =operation;
+    /*
+        if(!latestOperation.isEmpty()){
+            latestOperation = operation;
+            pressEqualsKey();
+        }else{
+            latestOperation = operation;
+        } */
+
     }
+
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         var result = switch(operation) {
