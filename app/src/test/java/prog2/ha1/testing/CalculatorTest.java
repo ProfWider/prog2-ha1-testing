@@ -63,7 +63,6 @@ class CalculatorTest {
         calc.pressDigitKey(5);
         calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("%");
-        calc.pressEqualsKey();
 
         String expected = "0.5";
         String actual = calc.readScreen();
@@ -79,7 +78,6 @@ class CalculatorTest {
         calc.pressDigitKey(5);
         calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("1/x");
-        calc.pressEqualsKey();
 
         String expected = "0.02";
         String actual = calc.readScreen();
@@ -87,27 +85,8 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /*@Test
-    @DisplayName("should display result after multiplicating two positive numbers")
-    void testPositiveMultiplicationMultiDigit() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(9);
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(3);
-        calc.pressDigitKey(3);
-        calc.pressEqualsKey();
-
-        String expected = "363";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }*/
-
     /*
     @Test
-
     @DisplayName("should display result after adding one negative number to a positive")
     void testNegativeAddition() {
         Calculator calc = new Calculator();

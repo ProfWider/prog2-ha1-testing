@@ -38,11 +38,13 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         latestOperation = operation;
+        pressEqualsKey();
         //latestOperation = Math.sqrt();
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + "."; // wenn 15 eingegeben wird, erkennt Methode dies als 15.0
+        if(!screen.endsWith(".")) screen = screen + ".";// wenn 15 eingegeben wird, erkennt Methode dies als 15.0
+
     }
 
     public void pressNegativeKey() { // die +/- Taste
