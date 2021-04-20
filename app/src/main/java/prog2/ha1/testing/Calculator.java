@@ -25,7 +25,10 @@ public class Calculator {
             screen = Integer.toString(digit);
         }
     }
-
+    public double Percentage(){
+        double result = Double.parseDouble(screen)  / 100 ;
+        return result;
+    }
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";
@@ -39,6 +42,7 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         var result = switch(operation) {
             case "√" -> Math.sqrt(Double.parseDouble(screen));
+            case "%" -> Percentage();
             default -> throw new IllegalArgumentException();
              };
         screen = Double.toString(result);
