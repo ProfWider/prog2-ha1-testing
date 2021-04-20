@@ -70,7 +70,22 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display Error after attempting o divide by zero")
+    @DisplayName("should display result after pressing √")
+    void testUnaryOperationKey2() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "4.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display Error after attempting Division by zero")
     void testDivisionbyZero(){
         Calculator calc = new Calculator();
 
