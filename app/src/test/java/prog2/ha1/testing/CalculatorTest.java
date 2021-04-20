@@ -57,7 +57,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display a point number with one dot, when two periods are typed")
+    @DisplayName("should display a point number with one dot, when two dots are typed")
     void testPressDotKey() {
         Calculator calc = new Calculator();
 
@@ -68,6 +68,20 @@ class CalculatorTest {
         calc.pressDigitKey(4);
 
         String expected = "3.44";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the inverse of the number")
+    void testPressInverseKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("inverse");
+
+        String expected = "0.2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
