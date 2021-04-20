@@ -37,11 +37,15 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        switch(operation) {
+            case "inverse" -> screen = Double.toString(1/Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        }
 
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey() { // die +/- Taste

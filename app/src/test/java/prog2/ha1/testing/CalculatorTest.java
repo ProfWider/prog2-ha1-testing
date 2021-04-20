@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,5 +39,52 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after multipying two positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "12";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display a point number with one dot, when two dots are typed")
+    void testPressDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+
+        String expected = "3.44";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the inverse of the number")
+    void testPressInverseKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("inverse");
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
