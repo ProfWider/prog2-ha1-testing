@@ -37,15 +37,16 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        //latestOperation = operation;
+        //latestOperation = Math.sqrt();
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.endsWith(".")) screen = screen + "."; // wenn 15 eingegeben wird, erkennt Methode dies als 15.0
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen; //Taste nicht definiert, was passiert bei 5.0, wird 5 weggenommen?
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -54,6 +55,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            //case "%" -> Double.parseDouble(screen) / 100;
+            //case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

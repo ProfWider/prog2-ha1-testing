@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after multiplicating two positive numbers")
+    @DisplayName("should display result after multiplicating positive numbers")
     void testPositiveMultiplication() {
         Calculator calc = new Calculator();
 
@@ -55,5 +55,83 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after calculating percentage of a number")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+        calc.pressEqualsKey();
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    /*@Test
+    @DisplayName("should display result after multiplicating two positive numbers")
+    void testPositiveMultiplicationMultiDigit() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "363";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }*/
+
+    /*
+    @Test
+
+    @DisplayName("should display result after adding one negative number to a positive")
+    void testNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "-6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    */
+
+    /*@Test
+    @DisplayName("should display result after calculating numbers with dots")
+    void testNumbersWithCommas() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        assertEquals("4", calc.readScreen());
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        assertEquals("5", calc.readScreen());
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        assertEquals("4", calc.readScreen());
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+        assertEquals("6", calc.readScreen());
+        calc.pressEqualsKey();
+
+        String expected = "9.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    */
 }
 
