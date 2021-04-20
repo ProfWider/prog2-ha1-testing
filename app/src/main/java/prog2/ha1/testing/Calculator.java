@@ -37,6 +37,18 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch(operation) {
+            case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException(); // negativ number results in NaN
+        };
+
+        if(Double.isNaN(result)){
+            screen = "ERROR";
+        }
+        else {
+            screen = Double.toString(result);
+        }
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
 
     }
 
@@ -54,9 +66,15 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException(); // result = infinity
         };
-        screen = Double.toString(result);
+
+        if(Double.isInfinite(result)){
+            screen = "ERROR";
+        }
+        else{
+            screen = Double.toString(result);
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
