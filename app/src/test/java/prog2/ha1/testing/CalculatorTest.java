@@ -51,7 +51,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after calculating square root")
+    @DisplayName("should display result after calculating Percentage")
     void testSqudsdareRoot() {
         Calculator calc = new Calculator();
 
