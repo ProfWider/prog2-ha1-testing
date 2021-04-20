@@ -71,6 +71,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after calculating 1/x")
+    void testFractions() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.02";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     /*@Test
     @DisplayName("should display result after multiplicating two positive numbers")
     void testPositiveMultiplicationMultiDigit() {
@@ -109,22 +125,22 @@ class CalculatorTest {
     }
     */
 
-    /*@Test
+    @Test
     @DisplayName("should display result after calculating numbers with dots")
     void testNumbersWithCommas() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        assertEquals("4", calc.readScreen());
+        //assertEquals("4", calc.readScreen());
         calc.pressDotKey();
         calc.pressDigitKey(5);
-        assertEquals("5", calc.readScreen());
+        //assertEquals("5", calc.readScreen());
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(4);
-        assertEquals("4", calc.readScreen());
+        //assertEquals("4", calc.readScreen());
         calc.pressDotKey();
         calc.pressDigitKey(6);
-        assertEquals("6", calc.readScreen());
+        //assertEquals("5", calc.readScreen());
         calc.pressEqualsKey();
 
         String expected = "9.1";
@@ -132,6 +148,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    */
+
 }
 
