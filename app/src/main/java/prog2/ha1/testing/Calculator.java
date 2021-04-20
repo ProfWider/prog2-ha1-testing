@@ -34,14 +34,13 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-    latestOperation =operation;
-    /*
+
         if(!latestOperation.isEmpty()){
             latestOperation = operation;
             pressEqualsKey();
         }else{
             latestOperation = operation;
-        } */
+        }
 
     }
 
