@@ -73,13 +73,13 @@ class CalculatorTest {
     void testPositiveAdditionDouble() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKeyDot(2);
+        calc.pressDigitKey(2);
         calc.pressDotKey();
-        calc.pressDigitKeyDot(5);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKeyDot(2);
+        calc.pressDigitKey(2);
         calc.pressDotKey();
-        calc.pressDigitKeyDot(5);
+        calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
         String expected = "5";
@@ -87,5 +87,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display the 1/x after giving the calc a number")
+    void testOneSlash() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
 }
 
+}
