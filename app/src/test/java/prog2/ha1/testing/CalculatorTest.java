@@ -52,4 +52,16 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+    @Test
+    @DisplayName("Percentage")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.06";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
