@@ -50,6 +50,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should not display the correct result after ... ")
+    void testUnaryOperation() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+        
+        assertEquals(expected, actual);
+    }
     //TODO hier weitere Tests erstellen
 }
 
