@@ -63,13 +63,30 @@ class CalculatorTest {
         calc.pressNegativeKey();
         calc.pressDigitKey(2);
         calc.pressDigitKey(3);
+        calc.pressNegativeKey();
 
 
-        String expected = "-23";
+        String expected = "23";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    @DisplayName("should find one percent of a number")
+    void testPressUnaryOperationKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
