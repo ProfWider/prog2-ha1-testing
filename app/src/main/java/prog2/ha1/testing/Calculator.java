@@ -26,6 +26,19 @@ public class Calculator {
         }
     }
 
+    public void pressDigitKeyDot(double digitdot) { // also die Tasten 0-50
+        if(digitdot > 50 || digitdot < 0) throw new IllegalArgumentException();
+
+        if(screen.equals("0")) screen = "";
+
+        if(latestOperation.isEmpty()) {
+            screen = screen + digitdot;
+        } else {
+            latestValue = Double.parseDouble(screen);
+            screen = Double.toString(digitdot);
+        }
+    }
+
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";

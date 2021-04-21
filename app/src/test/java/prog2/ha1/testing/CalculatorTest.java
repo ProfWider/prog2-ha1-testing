@@ -54,7 +54,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after adding two positive numbers")
+    @DisplayName("should display the math root after giving the calc a number")
     void testMathRoot() {
         Calculator calc = new Calculator();
 
@@ -62,6 +62,22 @@ class CalculatorTest {
         calc.pressUnaryOperationKey("√");
 
         String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding two positive numbers")
+    void testPositiveAdditionDouble() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKeyDot(2.5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKeyDot(2.5);
+        calc.pressEqualsKey();
+
+        String expected = "5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
