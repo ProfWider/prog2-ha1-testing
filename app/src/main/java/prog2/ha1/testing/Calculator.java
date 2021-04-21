@@ -37,7 +37,6 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -45,7 +44,8 @@ public class Calculator {
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+       screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+
     }
 
     public void pressEqualsKey() { // die Taste =
