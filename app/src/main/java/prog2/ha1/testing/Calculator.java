@@ -38,7 +38,14 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        double result = 0;
+        if(operation == "%") {
+            result = Double.parseDouble(screen) / 100;
+        }
+        else if(operation == "1/x") {
+            result = 1 / Double.parseDouble(screen);
+        }
+        screen = Double.toString(result);
     }
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
