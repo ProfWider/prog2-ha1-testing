@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 50 || digit < 0) throw new IllegalArgumentException();
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
 
@@ -26,8 +26,8 @@ public class Calculator {
         }
     }
 
-    public void pressDigitKeyDot(double digitdot) { // also die Tasten 0-50
-        if(digitdot > 50 || digitdot < 0) throw new IllegalArgumentException();
+    public void pressDigitKeyDot(double digitdot) { // also die Tasten 0-9
+        if(digitdot > 9 || digitdot < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
 

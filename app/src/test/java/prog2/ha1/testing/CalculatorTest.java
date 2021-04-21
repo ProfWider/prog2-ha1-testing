@@ -58,7 +58,8 @@ class CalculatorTest {
     void testMathRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(49);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
 
         String expected = "7";
@@ -72,9 +73,13 @@ class CalculatorTest {
     void testPositiveAdditionDouble() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKeyDot(2.5);
+        calc.pressDigitKeyDot(2);
+        calc.pressDotKey();
+        calc.pressDigitKeyDot(5);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKeyDot(2.5);
+        calc.pressDigitKeyDot(2);
+        calc.pressDotKey();
+        calc.pressDigitKeyDot(5);
         calc.pressEqualsKey();
 
         String expected = "5";
