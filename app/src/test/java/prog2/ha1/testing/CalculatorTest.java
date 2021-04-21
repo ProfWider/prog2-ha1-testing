@@ -27,11 +27,12 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
+        calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "4";
+        String expected = "24";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -60,7 +61,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(1);
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("%");
+        calc.pressUnaryOperationKey("%");
 
         String expected = "0.12";
         String actual = calc.readScreen();
@@ -69,18 +70,14 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two negative numbers")
-    void testNegativeAddition() {
+    @DisplayName("should display result after converting to 1/x")
+    void test1x() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("1/x");
 
-        String expected = "-4";
+        String expected = "0.5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

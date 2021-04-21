@@ -1,6 +1,7 @@
 package prog2.ha1.testing;
 
 // behaviour inspired by https://www.online-calculator.com/
+
 public class Calculator {
 
     private String screen = "0";
@@ -39,7 +40,6 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
     }
-
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
