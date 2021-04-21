@@ -26,18 +26,7 @@ public class Calculator {
         }
     }
 
-    public void pressDigitKeyDot(double digitdot) { // also die Tasten 0-9
-        if(digitdot > 9 || digitdot < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
-            screen = screen + digitdot;
-        } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Double.toString(digitdot);
-        }
-    }
 
     public void pressClearKey() { // die Taste CE
         screen = "0";
@@ -54,6 +43,16 @@ public class Calculator {
         if (operation == "√"){
           int root = (int) Math.sqrt(latestValue);
             screen = Integer.toString(root);
+        } else if (operation == "1/x"){
+            double oneslashx = latestValue /latestValue / latestValue;
+            if(latestValue == 1){
+               int oneslashone = 1;
+                screen = Integer.toString(oneslashone);
+            } else {
+            screen = Double.toString(oneslashx);
+
+
+            }
         }
     }
 
