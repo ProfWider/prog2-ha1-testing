@@ -90,5 +90,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display the multiplication with a whole and a point number  ")
+    void testMultiplicationWithDotkey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "19.8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
