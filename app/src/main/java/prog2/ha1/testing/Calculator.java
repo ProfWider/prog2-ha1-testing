@@ -32,13 +32,33 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+    public double berechneProzent(){
+
+        double Zahl1 = Double.parseDouble(screen);
+        double erg;
+
+         erg = Zahl1 / 100;
+
+        return erg;
+
+    }
+
+
+
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
 
+
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
-    }
+        var result = switch(operation) {
+            case "%" -> berechneProzent();
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
