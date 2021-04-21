@@ -44,7 +44,6 @@ public class Calculator {
     }
 
 
-
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
@@ -74,9 +73,12 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException() ;
         };
-        screen = Double.toString(result);
+
+
+            screen = Double.toString(result);
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
