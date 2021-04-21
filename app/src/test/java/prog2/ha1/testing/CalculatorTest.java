@@ -38,5 +38,54 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after pressing dot key")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+
+
+        String expected = "2.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should change a sign after pressing negative key")
+    void testPressNegativeKey() {
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+
+
+        String expected = "23";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("should find one percent of a number")
+    void testPressUnaryOperationKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
