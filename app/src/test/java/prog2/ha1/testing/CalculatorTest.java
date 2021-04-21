@@ -80,10 +80,9 @@ class CalculatorTest {
 
         calc.pressDigitKey(4);
         calc.pressDigitKey(0);
-        calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("%");
 
-        String expected = "4";
+        String expected = "0.4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
