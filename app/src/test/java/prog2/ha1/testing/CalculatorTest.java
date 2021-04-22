@@ -38,5 +38,32 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    /*
+     *
+     * Ein grüner Test.
+     * Dieser Test testet die Divison von zwei Komma-Zahlen
+     *
+     * */
+
+    @Test
+    @DisplayName("should display result after division comma number")
+    void TestCommaDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
