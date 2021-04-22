@@ -66,5 +66,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Teilaufgabe 2 : neuer roter Test
+    @Test
+    @DisplayName("Test: should display decimal number after double using pressDotKey")
+    void calculatorCanDisplayAllDecimalnumbers() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        String expected = "1.522";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
