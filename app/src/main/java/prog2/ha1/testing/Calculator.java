@@ -24,6 +24,7 @@ public class Calculator {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
+
     }
 
     public void pressClearKey() { // die Taste CE
