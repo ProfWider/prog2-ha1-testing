@@ -14,6 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
+
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
@@ -59,6 +60,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        //Aufgabe 3
         if(screen.equals("Infinity")) screen = "Error";
     }
 }

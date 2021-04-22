@@ -63,15 +63,17 @@ class CalculatorTest {
 
 
     //Aufgabe 2
-   /* @Test
+
+
+    @Test
     @DisplayName("should display positive result after multiplying two negative numbers")
     void testPositiveSubtraction2() {
         Calculator calc = new Calculator();
 
-        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
         calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("x");
-        calc.pressBinaryOperationKey("-");
+        calc.pressNegativeKey();
         calc.pressDigitKey(6);
         calc.pressEqualsKey();
 
@@ -80,28 +82,30 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-*/
 
-/*
+
+
     @Test
     @DisplayName("should display result after adding two point numbers IN BEARBEITUNG ")
     void testAddingPointNumbers() {
         Calculator calc = new Calculator();
 
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(6);
-        calc.pressBinaryOperationKey("x");
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(6);
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        String expected = "36";
+        String expected = "9";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-*/
+
 
     @Test
     @DisplayName("durch 0 = error")
@@ -120,6 +124,10 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+
+
+    
     //TODO hier weitere Tests erstellen
 }
 
