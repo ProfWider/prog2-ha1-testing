@@ -18,12 +18,13 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if(latestOperation.isEmpty() || screen.endsWith(".")) {
             screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -37,8 +38,16 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
+        var result = switch(latestOperation) {
+            case "%" -> Double.parseDouble(screen)/100;
+            case "v" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
