@@ -39,9 +39,13 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+latestOperation=operation;
     }
+public void presspercentage(){
+    if(screen.endsWith("%")) screen = Double.toString(latestValue / 100);
 
+
+}
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
