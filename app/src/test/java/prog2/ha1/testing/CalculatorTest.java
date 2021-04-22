@@ -56,7 +56,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after adding two positive numbers")
-    void testNegativeSubstraction() {
+    void testPositiveAdditionTwo() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(15);
