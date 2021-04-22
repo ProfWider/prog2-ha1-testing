@@ -38,5 +38,20 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    //Teilaufgabe 1 - gruener Test
+    @Test
+    @DisplayName("should display negativ number")
+    void testDiplayNegativNumber() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        String expected = "-2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
