@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Retro calculator")
 class CalculatorTest {
 
+    //gegeben
     @Test
     @DisplayName("should display correct number after pressing digit keys")
     void testDigitInput() {
@@ -21,6 +22,9 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+
+    //gegeben
     @Test
     @DisplayName("should display result after adding two positive numbers")
     void testPositiveAddition() {
@@ -37,6 +41,9 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+
+
+    //Aufgabe 1
     @Test
     @DisplayName("should display result after subtracting two positive numbers")
     void testPositiveSubtraction() {
@@ -53,27 +60,32 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display negative result after multiplying a positive with a negative number")
-    void testPositiveSubtraction() {
+
+
+    //Aufgabe 2
+   /* @Test
+    @DisplayName("should display positive result after multiplying two negative numbers")
+    void testPositiveSubtraction2() {
         Calculator calc = new Calculator();
 
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("x");
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(6);
         calc.pressEqualsKey();
 
-        String expected = "-18";
+        String expected = "36";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+*/
 
-
+/*
     @Test
-    @DisplayName("should display positive result after multiplying two negative numbers")
-    void testPositiveSubtraction() {
+    @DisplayName("should display result after adding two point numbers IN BEARBEITUNG ")
+    void testAddingPointNumbers() {
         Calculator calc = new Calculator();
 
         calc.pressBinaryOperationKey("-");
@@ -89,6 +101,24 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+*/
+
+    @Test
+    @DisplayName("durch 0 = error")
+    void testDividingByZero() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
     //TODO hier weitere Tests erstellen
 }
