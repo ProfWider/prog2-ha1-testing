@@ -47,7 +47,7 @@ public class Calculator {
         if(multipleOperations > 0){
             calculateMultipleOperations();
         }
-
+        latestOperation = operation;
         multipleOperations++;
     }
 
@@ -57,9 +57,14 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "√" -> Math.pow(Double.parseDouble(screen), 0.5);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
+
+    }
+
+    public void squareRoot(int number){
 
     }
 
@@ -77,6 +82,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "√" -> Math.pow(Double.parseDouble(screen), 0.5);
             default -> throw new IllegalArgumentException();
         };
         multipleOperations = 0;
