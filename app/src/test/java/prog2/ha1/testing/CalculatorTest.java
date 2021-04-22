@@ -45,12 +45,38 @@ class CalculatorTest {
         Calculator calc = new Calculator();
         calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(2.5);
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "2.4";
+        String expected = "3";
         String actual = calc.readScreen();
 
+        assertEquals(expected, actual);
+
+
+    }
+    @Test
+    @DisplayName("should Display result unary Operation")
+    void testUnary(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("sqrt");
+        String expected ="3.0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("Should clear Display when pressed CE-Key")
+    void pressDotKey(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        String expected ="25.5";
+        String actual = calc.readScreen();
         assertEquals(expected, actual);
 
 
