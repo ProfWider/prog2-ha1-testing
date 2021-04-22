@@ -64,10 +64,6 @@ public class Calculator {
 
     }
 
-    public void squareRoot(int number){
-
-    }
-
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
