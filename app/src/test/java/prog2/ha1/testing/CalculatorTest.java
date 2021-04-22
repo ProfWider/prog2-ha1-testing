@@ -54,15 +54,27 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after % Button one positive numbers")
+    @DisplayName("should display result after % Button one positive number")
     void testPercent() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressUnaryOperationKey("%");
 
-
         String expected = "0.05";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after v (square root ) Button one positive number")
+    void testSquareRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("v");
+
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
