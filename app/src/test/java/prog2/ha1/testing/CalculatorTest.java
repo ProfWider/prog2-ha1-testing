@@ -64,4 +64,17 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
+
+    void testDurchNullTeilenZeigtError() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
