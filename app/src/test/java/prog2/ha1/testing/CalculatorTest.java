@@ -70,5 +70,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after adding two positive numbers")
+    void testUnaryOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
