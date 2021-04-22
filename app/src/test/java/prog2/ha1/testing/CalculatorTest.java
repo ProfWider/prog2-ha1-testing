@@ -53,5 +53,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    //Teilaufgabe 2 : neuer roter Test
+    @Test
+    @DisplayName("New Button for OperationKey")
+    void calculatorOperationKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.3333333333333333";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
