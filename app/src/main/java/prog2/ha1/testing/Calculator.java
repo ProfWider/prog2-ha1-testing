@@ -40,7 +40,7 @@ public class Calculator {
         latestOperation = operation;
         var result = switch(latestOperation) {
             case "%" -> Double.parseDouble(screen)/100;
-
+            case "v" -> Math.sqrt(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
