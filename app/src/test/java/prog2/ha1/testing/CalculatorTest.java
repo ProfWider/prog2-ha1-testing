@@ -55,16 +55,16 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after subtract two negative numbers")
+    @DisplayName("should display result after adding two positive numbers")
     void testNegativeSubstraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(15);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(25);
         calc.pressEqualsKey();
 
-        String expected = "-2";
+        String expected = "40";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
