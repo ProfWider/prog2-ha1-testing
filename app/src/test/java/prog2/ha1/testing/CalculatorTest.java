@@ -38,5 +38,50 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    //Teilaufgabe 1 - gruener Test
+    @Test
+    @DisplayName("should display negativ number")
+    void testDiplayNegativNumber() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        String expected = "-2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //Teilaufgabe 2 : neuer roter Test
+    @Test
+    @DisplayName("New Button for OperationKey")
+    void calculatorOperationKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.3333333333333333";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    //Teilaufgabe 2 : neuer roter Test
+    @Test
+    @DisplayName("Test: should display decimal number after double using pressDotKey")
+    void calculatorCanDisplayAllDecimalnumbers() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        String expected = "1.522";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 }
 
