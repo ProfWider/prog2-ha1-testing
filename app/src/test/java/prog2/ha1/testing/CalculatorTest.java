@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display result after adding two positive numbers")
-    void testPositiveAdditionTwo() {
+    void testPositiveSubstraction() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
