@@ -57,11 +57,10 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            case "√" -> Math.pow(Double.parseDouble(screen), 0.5);
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
