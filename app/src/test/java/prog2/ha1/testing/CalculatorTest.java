@@ -37,7 +37,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after adding two positive numbers")
+    @DisplayName("should display result after adding one positive and one negative number")
     void testnegativeAddition() {
         Calculator calc = new Calculator();
 
@@ -47,6 +47,22 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display result after adding two positive numbers")
+    void testdivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "error";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
