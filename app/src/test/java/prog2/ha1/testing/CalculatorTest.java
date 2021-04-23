@@ -65,7 +65,7 @@ class CalculatorTest {
         calc.pressDigitKey(8);
         calc.pressUnaryOperationKey("%");
         //calc.pressDigitKey();
-        calc.pressEqualsKey();
+        //calc.pressEqualsKey();
 
         String expected = "0.08";
         String actual = calc.readScreen();
@@ -80,8 +80,8 @@ class CalculatorTest {
 
         calc.pressDigitKey(4);
         calc.pressUnaryOperationKey("V");
-       // calc.pressDigitKey();
-        calc.pressEqualsKey();
+        //calc.pressDigitKey();
+        // calc.pressEqualsKey();
 
         String expected = "2";
         String actual = calc.readScreen();
