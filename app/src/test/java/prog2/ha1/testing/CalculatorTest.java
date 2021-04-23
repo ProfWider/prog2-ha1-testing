@@ -78,7 +78,6 @@ class CalculatorTest {
 
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
-        calc.pressEqualsKey();
 
         String expected = "3";
         String actual = calc.readScreen();
