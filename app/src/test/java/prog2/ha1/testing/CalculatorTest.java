@@ -38,5 +38,20 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should subtract two numbers from eachother")
+    void testSubtraction(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String erwartet = "2";
+        String ergebnis = calc.readScreen();
+
+        assertEquals(erwartet, ergebnis);
+    }
 }
 
