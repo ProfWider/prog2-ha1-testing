@@ -73,7 +73,41 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    //Teil 2 der HA
+    //Teil 2
 
+    @Test
+    @DisplayName("should display result after taking a root of a positive number")
+    void testPositiveRoot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("√");
+
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding two positive numbers, second number >= 10")
+    void testAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "589";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
