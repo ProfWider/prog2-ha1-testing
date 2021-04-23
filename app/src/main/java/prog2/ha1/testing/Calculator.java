@@ -1,6 +1,7 @@
 package prog2.ha1.testing;
 
-// behaviour inspired by https://www.online-calculator.com/
+// behaviour inspired by https://www.online-calcula
+// tor.com/
 public class Calculator {
 
     private String screen = "0";
@@ -56,7 +57,16 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        if (Double.isInfinite(result)) {
+            screen = "Error";
+        }
+        else
+            screen = Double.toString(result);
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }
+
+
+
