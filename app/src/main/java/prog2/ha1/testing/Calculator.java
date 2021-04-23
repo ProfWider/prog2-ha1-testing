@@ -9,6 +9,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    public boolean multipleOperations = false;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -30,14 +32,35 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        multipleOperations = false;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if(multipleOperations){
+            calculateBinary();
+        }
         latestOperation = operation;
+        multipleOperations = true;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch(operation) {
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+    }
 
+    public void calculateBinary(){
+        var result = switch(latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -49,14 +72,8 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+        calculateBinary();
+        multipleOperations = false;
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
