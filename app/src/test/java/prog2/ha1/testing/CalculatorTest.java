@@ -57,6 +57,8 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display reciprocal as point number")
+    //https://stackoverflow.com/questions/26458937/getting-the-reciprocal-in-a-number-exception-in-java
+    // Rechenoperationen als Grundidee für Reziprokeberechnung genommen
     void testFractionDivision() {
         Calculator calc = new Calculator();
 
