@@ -9,6 +9,10 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private double memory = 0.0; //Klassenvariable um in mehreren Methoden zu verwenden
+
+    private double result = 0.0;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -24,6 +28,7 @@ public class Calculator {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -37,7 +42,7 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -49,14 +54,23 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
+        result = switch(latestOperation) { //var rausgenommen, als Klassenvariabel deklariert um bei pressMemoryPlus nutzen zu können
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "w" -> Math.sqrt(Double.parseDouble(screen)); //Quelle: http://java-zwischendurch.blogspot.com/2012/08/wurzelziehen-und-potezieren-in-java.html
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
+    public void pressMemoryPlus() { //addiert Ergebnis auf den gespeicherten Wert
+        memory = memory + result;
+        screen = Double.toString(memory);
+    }
+
+
+
 }
