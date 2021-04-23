@@ -37,7 +37,6 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
     /**
      * HA Teilaufgabe 1: Schreiben Sie einen neuen zusätzlichen Test, der eine bisher nicht getestete Funktionalität abdeckt, die bereits funktioniert und der daher direkt grün wird.
      */
