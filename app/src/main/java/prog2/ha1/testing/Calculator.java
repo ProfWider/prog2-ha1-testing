@@ -2,7 +2,8 @@ package prog2.ha1.testing;
 
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
-
+//Test für Commit
+    int a=4;
     private String screen = "0";
 
     private double latestValue;
