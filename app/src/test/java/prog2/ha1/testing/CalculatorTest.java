@@ -53,5 +53,38 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after using the modulo operation")
+    void testModuloOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after adding three positive numbers")
+    void testPositiveAdditionOfMultipleNumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
