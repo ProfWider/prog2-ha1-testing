@@ -59,7 +59,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("square root");
+        calc.pressUnaryOperationKey("sqrt");
 
         String expected = "2";
         String actual = calc.readScreen();
