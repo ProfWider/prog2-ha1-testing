@@ -72,6 +72,23 @@ class CalculatorTest {
     }
 
 
+    @Test
+    @DisplayName("should display result after dividing a number trough zero")
+    void testProzent() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("%");
+
+        calc.pressEqualsKey();
+
+        String expected = "0.09";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
 
 
 
