@@ -55,6 +55,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "w" -> Math.sqrt(Double.parseDouble(screen)); //Quelle: http://java-zwischendurch.blogspot.com/2012/08/wurzelziehen-und-potezieren-in-java.html
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
