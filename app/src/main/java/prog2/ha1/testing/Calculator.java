@@ -43,10 +43,10 @@ public class Calculator {
             double percentage = Double.parseDouble(screen) / 100;
             screen = Double.toString(percentage);
          }
-//        if (operation == "sqrt") {
-//            double squareRoot = Math.sqrt(Double.parseDouble(screen));
-//            screen = Double.toString(squareRoot);
-//         }
+        if (operation == "sqrt") {
+            double squareRoot = Math.sqrt(Double.parseDouble(screen));
+            screen = Double.toString(squareRoot);
+         }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
