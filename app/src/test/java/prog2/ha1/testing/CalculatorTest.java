@@ -83,13 +83,25 @@ class CalculatorTest {
         calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("%");
 
-        String expected = "3.60";
+        String expected = "3.6";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
-
     }
 
+    @Test
+    @DisplayName("should display 0 when multiplying with 0 | Gegentest zu testDivideby0()")
+    void testMultiplyWith0() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(0);
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

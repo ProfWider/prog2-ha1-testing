@@ -37,9 +37,15 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch(operation) {
+            case "%" -> Double.parseDouble(screen) / 100.0;
+            //case "wurzel" ->
+            //case "1/x" ->
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
-
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
@@ -49,14 +55,19 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if (Double.parseDouble(screen) == 0 & latestOperation == "/") {
+            screen = "ERROR";
+        }
+        else {
+            var result = switch(latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(result);
+            if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        }
     }
 }
