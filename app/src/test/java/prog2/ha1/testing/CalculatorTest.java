@@ -68,6 +68,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     @DisplayName("should display result after using square root")
     void testSquareRootTwo() {
@@ -78,6 +79,32 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should add number in memory")
+    void testMemoryPlus() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();  //=4
+
+        calc.pressMemoryPlus(); //Zwischenergebnis 4 gespeichert
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey(); //=6
+
+        calc.pressBinaryOperationKey("+");
+        calc.pressMemoryPlus(); //Zwischenergebnis 4
+        calc.pressEqualsKey();
+
+        String expected = "10";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
