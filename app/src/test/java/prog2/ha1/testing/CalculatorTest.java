@@ -57,19 +57,20 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after dividing a number trough zero")
-    void testDividingZero() {
+    void testNegativeDividing() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(0);
+        calc.pressDigitKey(-4);
         calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(-2);
         calc.pressEqualsKey();
 
-        String expected = "0";
+        String expected = "2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
 
 
 

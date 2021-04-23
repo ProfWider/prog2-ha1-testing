@@ -16,7 +16,7 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "0";
+        if(screen.equals("0")) screen = "";
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -24,6 +24,8 @@ public class Calculator {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
+
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -56,7 +58,10 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
+
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }
