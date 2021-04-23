@@ -42,13 +42,14 @@ class CalculatorTest {
     @DisplayName("should display result after adding two positive numbers")
     void testPositiveSubstraction() {
         Calculator calc = new Calculator();
-
         calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "2";
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -58,11 +59,11 @@ class CalculatorTest {
     void testMathRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(6);
+        calc.pressDigitKey(0);
         calc.pressUnaryOperationKey("√");
 
-        String expected = "7";
+        String expected = "7.745966692414834";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
