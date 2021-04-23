@@ -39,8 +39,20 @@ public class Calculator {
             latestOperation = operation;
         }
 
+    /**
+     * HA Teilaufgabe 3: Schreiben Sie zwei Bugfixes (also Änderungen der Implementierung), so dass die zwei zuvor hinzugefügten Tests erfolgreich durchlaufen.
+     */
         public void pressUnaryOperationKey (String operation) { // also die Tasten Wurzel, %, 1/x
 
+            var tmp = switch (operation) {
+                case "%" -> Double.parseDouble(screen)/100;
+                case "1/x" -> 1/Double.parseDouble(screen);
+                case "√" -> Math.sqrt(Double.parseDouble(screen));
+
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(tmp);
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
         }
 
         public void pressDotKey () { // die Komma- bzw. Punkt-Taste
