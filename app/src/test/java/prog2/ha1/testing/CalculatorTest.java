@@ -55,5 +55,36 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after using the percentage key")
+    void testPercentageKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+//    @Test
+//    @DisplayName("should display result after using the square root key")
+//    void testSquareRootKey() {
+//        Calculator calc = new Calculator();
+//
+//        calc.pressDigitKey(6);
+//        calc.pressDigitKey(4);
+//        calc.pressUnaryOperationKey("sqrt");
+//
+//        String expected = "8";
+//        String actual = calc.readScreen();
+//
+//        assertEquals(expected, actual);
+//    }
+
 }
 
