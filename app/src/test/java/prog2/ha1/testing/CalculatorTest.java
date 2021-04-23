@@ -54,5 +54,20 @@ class CalculatorTest {
         assertEquals(expected,actual);
 
     }
+
+    @Test
+    @DisplayName("should display reciprocal as point number")
+    void testFractionDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+    }
 }
 

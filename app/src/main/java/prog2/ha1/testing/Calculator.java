@@ -30,6 +30,8 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+
+
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
@@ -37,7 +39,7 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+    latestOperation = operation;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
