@@ -55,36 +55,20 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two positive numbers")
-    void testPositiveAdditionTwo() {
+    @DisplayName("should display result after using square root")
+    void testSquareRoot() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(15);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(25);
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("w"); // w steht für Wurzelzeichen
         calc.pressEqualsKey();
 
-        String expected = "40";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display result after adding two positive numbers")
-    void testUnaryOperation() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(3);
-        calc.pressUnaryOperationKey("x");
-        calc.pressDigitKey(3);
-        calc.pressEqualsKey();
-
-        String expected = "9";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 
 }
 
