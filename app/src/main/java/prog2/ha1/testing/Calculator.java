@@ -9,6 +9,10 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private double memory = 0.0; //Klassenvariable um in mehreren Methoden zu verwenden
+
+    private double result = 0.0;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -50,7 +54,7 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
+        result = switch(latestOperation) { //var rausgenommen, als Klassenvariabel deklariert um bei pressMemoryPlus nutzen zu können
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
@@ -62,8 +66,11 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
-    public void pressMemoryPlus() {
-
+    public void pressMemoryPlus() { //addiert Ergebnis auf den gespeicherten Wert
+        memory = memory + result;
+        screen = Double.toString(memory);
     }
+
+
 
 }

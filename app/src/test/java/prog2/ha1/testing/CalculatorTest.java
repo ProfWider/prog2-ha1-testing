@@ -93,18 +93,17 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();  //=4
-
         calc.pressMemoryPlus(); //Zwischenergebnis 4 gespeichert
+
         calc.pressDigitKey(3);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(3);
         calc.pressEqualsKey(); //=6
 
-        calc.pressBinaryOperationKey("+");
-        calc.pressMemoryPlus(); //Zwischenergebnis 4
-        calc.pressEqualsKey();
+        calc.pressMemoryPlus(); //+Zwischenergebnis 4
 
-        String expected = "10";
+
+        String expected = "10.0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
