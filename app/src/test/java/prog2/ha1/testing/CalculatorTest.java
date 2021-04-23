@@ -42,49 +42,45 @@ class CalculatorTest {
     void testSubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "4";
+        String expected = "-1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display result after subtraction of two negative numbers")
+    @DisplayName("calculate the square root")
     void testNegativeAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(-5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(-8);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(1);
+        calc.pressUnaryOperationKey("Wurzel");
 
-        String expected = "-13";
+        String expected = "1";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should display result after adding two decimal numbers")
+    @DisplayName("should display current number after pressing equals key")
     void testDotKey() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(5.5);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3.5);
+        calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        String expected = "9";
+        String expected = "5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
 }
+
 

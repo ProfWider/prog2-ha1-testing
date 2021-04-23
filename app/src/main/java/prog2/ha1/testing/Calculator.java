@@ -9,8 +9,6 @@ public class Calculator {
 
     private String latestOperation = "";
 
-    public  boolean n;
-
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -38,40 +36,29 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
 
         latestOperation = operation;
-        if (n) {
-            latestOperation = "-";
-            n=true;
-
-        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        latestOperation = operation;
+        pressEqualsKey();
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+
         if(!screen.endsWith(".")) screen = screen + ".";
+
     }
 
-    public void pressNegativeKey(int digit) { // die +/- Taste
+    public void pressNegativeKey() { // die +/- Taste
 
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-        if(screen.equals("0")) screen = "";
+        //screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
 
-        if(screen.equals("0")) screen = "";
-
-
-        if(!n) {
-            screen = "-" + digit;
-            n = true;
-        } else {
-            latestValue = Double.parseDouble(screen);
-            screen = latestOperation + digit;
-            screen = Integer.toString(digit);
-            n = false;
+        if(screen.startsWith("-")){
+            screen = screen.substring(1);
+        }else {
+            screen = "-" + screen;
         }
-
-
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -80,6 +67,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "Wurzel" -> Math.sqrt(Double.parseDouble(screen));
+            case "" -> Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
