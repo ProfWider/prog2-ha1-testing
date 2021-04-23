@@ -61,11 +61,11 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(10);
-        calc.pressBinaryOperationKey("*"); //IllegalArgumentException (1. Implementierungslücke)
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(0);
         calc.pressEqualsKey();
 
-        String expected = "0"; //Bei einem Ergebnis von 0 wird keine Zahl erwartet (2. Implementierungslücke)
+        String expected = "0"; //Bei einem Ergebnis von 0 wird keine Zahl erwartet (1. Implementierungslücke)
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
