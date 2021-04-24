@@ -90,7 +90,28 @@ class CalculatorTest {
 
     }
 
+    //Second Red Test
 
+
+    @Test
+    @DisplayName("should display result after pressing Percentage button")
+    void testPositivePercent() {
+        Calculator calc = new Calculator();
+
+        //Test Eingaben
+        calc.pressDigitKey(8);
+        calc.pressDotKey();
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("%");
+
+        //Erwartetetes Ergebnis
+        String expected = "0.084";
+        String actual = calc.readScreen();
+
+        //Vergleich
+        assertEquals(expected, actual);
+
+    }
 
 
 }
