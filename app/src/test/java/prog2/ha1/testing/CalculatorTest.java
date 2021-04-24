@@ -52,13 +52,12 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result by dividing two positive numbers")
+    @DisplayName("should display square root of two positive numbers")
     void testPositiveDivision() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
-        calc.pressUnaryOperationKey("/");
-        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("sqrt");
 
         String expected = "3";
         String actual = calc.readScreen();
