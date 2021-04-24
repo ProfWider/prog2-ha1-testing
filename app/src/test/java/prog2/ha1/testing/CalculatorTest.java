@@ -59,12 +59,27 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("Wurzel");
+        calc.pressUnaryOperationKey("Wurzel");
 
 
         String expected = "3";
         String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    @DisplayName("Dot Key Test.")
+    void DotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressDotKey();
+        calc.pressDigitKey(8);
+
+        String expected = "8.8";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+        //assertEquals(expected, actual);
     }
 }
 
