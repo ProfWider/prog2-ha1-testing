@@ -67,15 +67,15 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }@Test
-    @DisplayName("should display result after % ")
-    void testpercent() {
+    @DisplayName("should display result after 1/x ")
+    void testdvisionwithx() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1);
-        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
 
 
-        String expected = "0.01";
+        String expected = "0.5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
