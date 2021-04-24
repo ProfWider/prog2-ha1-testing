@@ -37,6 +37,46 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result after dividing two numbers > 0")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    @DisplayName("Percentage")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.06";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Divide by 0")
+    void divideByZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+}
