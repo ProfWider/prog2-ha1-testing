@@ -68,6 +68,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after building root")
+    void testBuildRoot() {
+        Calculator calc = new Calculator();
 
+
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "1.73";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
