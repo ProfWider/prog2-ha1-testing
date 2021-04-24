@@ -97,6 +97,33 @@ class CalculatorTest {
     }
 
 
+    /*
+     *
+     * Zweiter roter Test.
+     * Dieser Test testet die Prozentrechnung.
+     *
+     * */
+    @Test
+    @DisplayName("should display result after percentage")
+    void TestPercentage(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+
+        calc.pressUnaryOperationKey("%");
+
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
 
 
 
