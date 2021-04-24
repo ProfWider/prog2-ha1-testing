@@ -24,7 +24,6 @@ public class Calculator {
             }else{
                 screen = screen + String.valueOf(digit);
             }
-
         } else {
               latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
