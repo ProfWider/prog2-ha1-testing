@@ -20,7 +20,12 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
-        } else {
+        }
+        else if(screen.endsWith(".")) {
+            screen = screen + digit;
+        }
+
+         else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
@@ -37,6 +42,13 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        latestOperation = operation;
+        var result = switch (latestOperation) {
+            case "%" -> Double.parseDouble(screen) / 100;
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
 
     }
 
@@ -55,6 +67,8 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
+            // case "%" -> Double.praseDouble(screen) / 100; wenn man es mit Equals macht
+            // case "1/x" -> 1 / Double.parseDouble(screen);
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
