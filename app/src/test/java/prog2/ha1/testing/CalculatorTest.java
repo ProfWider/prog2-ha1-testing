@@ -37,6 +37,57 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display result after adding two positive numbers")
+    void testMultiply() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    @DisplayName("should display result after adding two positive floating point numbers")
+    void testFloatAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display percentage for given number")
+    void testPercent() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.05";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 

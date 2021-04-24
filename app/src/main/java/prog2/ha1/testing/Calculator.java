@@ -8,6 +8,7 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
+    private boolean latestValueSaved = false;
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
@@ -16,13 +17,18 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
+        if(screen.equals("0")) screen = ""; // nicht Verständlich
+        // Fall 1: latestOperation.isEmpty() == true || latestValueSaved == true -> screen = screen + digit
+        // true || false -> true ; false || true -> true ; true || true -> true ; false || false -> false
+        // Fall 2: latestOperation.isEmpty() == false -> ...
+        // Fall 3: latestValueSaved == true -> screen = screen + digit
+        // Fall 4: latestValueSaved == false -> Fall 1 o. Fall 2
+        if(latestOperation.isEmpty() || latestValueSaved) { // isEmpty() prüft ob den Wert leer ist, dann ergebt true
             screen = screen + digit;
         } else {
-            latestValue = Double.parseDouble(screen);
+            latestValue = Double.parseDouble(screen); // parseDouble wird den Wert von screen von String in Double umwandeln
             screen = Integer.toString(digit);
+            latestValueSaved = true;
         }
     }
 
@@ -30,6 +36,7 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        latestValueSaved = false;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
@@ -37,7 +44,12 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch(operation) {
+            case "%" -> Double.parseDouble(screen) / 100;
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -56,7 +68,9 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+        latestValueSaved = false;
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        // Ternaerer Operator: boolean (true/false) ? wird zurueckgegeben wenn true : wird zurueckgegeben wenn false;
     }
 }
