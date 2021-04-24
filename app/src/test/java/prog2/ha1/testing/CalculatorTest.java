@@ -47,7 +47,7 @@ class CalculatorTest {
      * */
 
     @Test
-    @DisplayName("should display result after division comma number")
+    @DisplayName("should display result after dividing comma numbers")
     void TestCommaDivision() {
         Calculator calc = new Calculator();
 
@@ -65,94 +65,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
 
-    /*
-     *
-     * Erster roter Test.
-     * Dieser Test testet die Divison von zwei negativen Zahlen
-     *
-     * */
-
-
-    @Test
-    @DisplayName("should display result after negative division ")
-    void TestNegativeDivision() {
-        Calculator calc = new Calculator();
-
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressDigitKey(0);
-        calc.pressNegativeKey();
-        calc.pressBinaryOperationKey("/");
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-
-
-        String expected = "-10";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-
-    /*
-     *
-     * Zweiter roter Test.
-     * Dieser Test testet die Subtraktion von zwei negativen Komma-Zahlen
-     *
-     * */
-
-
-    @Test
-    @DisplayName("should display result after divison two negativ Komma Zahlen")
-    void TestNegativeSubtraction(){
-        Calculator calc = new Calculator();
-
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressDotKey();
-        calc.pressDigitKey(2);
-
-        calc.pressBinaryOperationKey("-");
-
-        calc.pressNegativeKey();
-        calc.pressDigitKey(2);
-        calc.pressDotKey();
-        calc.pressDigitKey(2);
-
-
-        String expected = "0";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-
-    /*
-     *
-     * Dritter roter Test.
-     * Dieser Test testet die Addition von zwei Zahlen ohne ein Rechenzeichen
-     *
-     * */
-
-
-    @Test
-    @DisplayName("should display result after add without operation key")
-    void TestAddWithoutOperationsKey(){
-
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(5);
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("/");
-        calc.pressEqualsKey();
-
-
-        String expected = "55";
-
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 }
 
 
