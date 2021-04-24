@@ -42,6 +42,9 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        if("1/x".equals(operation)){
+            screen = String.valueOf(1/Double.parseDouble(screen));
+        }
 
     }
 
