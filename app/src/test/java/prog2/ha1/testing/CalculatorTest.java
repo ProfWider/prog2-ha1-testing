@@ -56,10 +56,10 @@ class CalculatorTest {
     void testPositiveDivision() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(6);
         calc.pressUnaryOperationKey("sqrt");
 
-        String expected = "3";
+        String expected = "2,44948974";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
