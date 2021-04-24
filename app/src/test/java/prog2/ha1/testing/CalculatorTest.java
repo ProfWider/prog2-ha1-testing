@@ -75,5 +75,23 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //neuer roter Test 2
+
+    @Test
+    @DisplayName("should display result after divide a positive number with a higher positive number")
+    void testDivisionWithHigherNumber() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "0,66666667"; // 8 Nachkommastellen,  an der 8 Stelle aufrunden
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
