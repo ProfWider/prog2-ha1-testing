@@ -67,17 +67,34 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display reciprocal of a number")
-    void test() {
+    void testReciprocal() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(6);
         calc.pressUnaryOperationKey("recip");
 
-        String expected = "0,11111111";
+        String expected = "0,16666667";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display only one decimal point")
+    void testDotKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+        calc.pressDigitKey(6);
+        calc.pressDotKey();
+
+        String expected = "6.6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
     //TODO hier weitere Tests erstellen
 }
 
