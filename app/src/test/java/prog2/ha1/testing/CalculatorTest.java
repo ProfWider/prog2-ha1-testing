@@ -41,16 +41,18 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after multiplying two positive numbers")
-    void testPositiveMultiplication() {
+    @DisplayName("should display result after adding three positive numbers")
+    void testMultipleAddition() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("x");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(4);
         calc.pressEqualsKey();
 
-        String expected = "16";
+        String expected = "12";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
