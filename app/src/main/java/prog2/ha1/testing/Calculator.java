@@ -20,6 +20,8 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
+        } else if (latestValue != 0) { // wenn die nicht gleich null ist
+            screen = screen + digit;   // das was angezeigt wird
         } else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
