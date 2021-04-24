@@ -43,6 +43,7 @@ public class Calculator {
             case "sqrt" -> Math.sqrt(Double.parseDouble(screen)); //Double.parseDouble() aus meth pressDigitKey
             default -> throw new IllegalArgumentException();
         };
+        // QuellIdee https://www.youtube.com/watch?v=KLvnQhdx4BI Java: formatting numbers with NumberFormat
         NumberFormat nf = NumberFormat.getNumberInstance(); //initialize numberformat
         nf.setMaximumFractionDigits(8); //max number of decimal digits
         screen = nf.format(result);//rounded operation
