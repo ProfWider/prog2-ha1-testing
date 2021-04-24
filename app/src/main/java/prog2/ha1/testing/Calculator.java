@@ -19,11 +19,11 @@ public class Calculator {
         if(screen.equals("0")) screen = "";
 
         if(latestOperation.isEmpty()) {
-            screen = screen + digit;
-        } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
-        }
+        screen = screen + digit;
+    } else {
+        screen = Integer.toString(digit);
+    }
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -33,6 +33,19 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if (latestOperation.isEmpty()){
+            latestValue = Double.parseDouble(screen);
+        } else {
+            latestValue = switch(latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                case "%" -> latestValue / 100;
+                default -> throw new IllegalArgumentException();
+            };
+        }
+        screen = "0";
         latestOperation = operation;
     }
 
@@ -54,6 +67,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "%" -> latestValue / 100;
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
