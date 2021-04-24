@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
     @Test
     @DisplayName("should display result after multiply two positive numbers")
-    void testPositiveMultiplication(){
+    void testPositiveMultiplication() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(9);
@@ -49,6 +49,19 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "45";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after take procent of one positive number")
+    void testPositiveProcent(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.09";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
