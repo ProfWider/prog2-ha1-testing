@@ -64,6 +64,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display reciprocal of a number")
+    void test() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("recip");
+
+        String expected = "1,16666667";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     //TODO hier weitere Tests erstellen
 }
 
