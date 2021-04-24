@@ -73,4 +73,28 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after adding two positive decimal numbers")
+    void testDecimal() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        assertEquals("8", calc.readScreen());
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
+        assertEquals("8.1", calc.readScreen());
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        assertEquals("1", calc.readScreen());
+        calc.pressDotKey();
+        calc.pressDigitKey(2);
+        assertEquals("1.2", calc.readScreen());
+        calc.pressEqualsKey();
+
+        String expected = "9.3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
