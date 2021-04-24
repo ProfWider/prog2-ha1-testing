@@ -14,15 +14,18 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if (digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+        if (screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if (latestOperation.isEmpty()) {
+            screen = screen + digit;
+        } else if (latestValue != 0) {
             screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
+
         }
     }
 
@@ -33,22 +36,20 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
+            latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         latestOperation = operation;
         pressEqualsKey();
-        //latestOperation = Math.sqrt();
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";// wenn 15 eingegeben wird, erkennt Methode dies als 15.0
-
+        if(!screen.endsWith(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen; //Taste nicht definiert, was passiert bei 5.0, wird 5 weggenommen?
+        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -61,7 +62,7 @@ public class Calculator {
             case "1/x" -> 1 / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+            screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
