@@ -70,15 +70,16 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("soll eins geteilt durch x rechnen")
-    void testEinsGeteiltDurchX() {
+    @DisplayName("soll eins geteilt durch 0 rechnen")
+    void testEinsGeteiltDurchNull() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
-        calc.pressUnaryOperationKey("1/x");
+       calc.pressDigitKey(4);
+       calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
-
-        String expected = "0.125";
+        String expected = "Fehler";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
