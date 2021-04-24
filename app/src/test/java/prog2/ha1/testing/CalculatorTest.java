@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +38,56 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("should display 0 after pressing clear key")
+    void testClearKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(5);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display correct square root")
+    void testSquareRoot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("root");
+
+        String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display correct number after adding two decimal/ point numbers")
+    void testAddingPointNumbers(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(7);
+        calc.pressEqualsKey();
+
+        String expected = "9.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 

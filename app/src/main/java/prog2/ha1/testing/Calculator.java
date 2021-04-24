@@ -9,6 +9,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean deleteScreen = false;
+
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -18,11 +20,16 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+
+        if(!deleteScreen) {
             screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+            if (deleteScreen){
+                screen = "";
+                deleteScreen = false;
+            }
+            screen = screen + digit;
         }
     }
 
@@ -34,10 +41,17 @@ public class Calculator {
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
+        deleteScreen = true;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch(operation) {
+            case "root" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        deleteScreen = true;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
