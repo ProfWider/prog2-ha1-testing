@@ -79,7 +79,7 @@ class CalculatorTest {
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");//Test fehlgeschlagen weil Methode noch nicht implementiert ist (2. Implementierungslücke)
 
-        String expected = "3";
+        String expected = "3.0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
