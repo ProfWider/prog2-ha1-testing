@@ -41,10 +41,26 @@ class CalculatorTest {
     @DisplayName("should clear all latest values and inputs by pressing the CE button")
     void testClearAllValues() {
         Calculator calc = new Calculator();
-
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
         calc.pressClearKey();
 
         String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result by dividing two positive numbers")
+    void testPositiveDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("/");
+        calc.pressDigitKey(3);
+
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
