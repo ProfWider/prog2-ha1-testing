@@ -11,6 +11,7 @@ public class Calculator {
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
+
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
@@ -20,7 +21,13 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
-        } else {
+        }
+        /*if(screen.equals(digit + latestOperation + latestValue)){//Hier weiter
+            double doubleDigit = 0;
+            doubleDigit = digit + latestValue;
+            screen = Double.toString(doubleDigit);
+        }*/
+      else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
@@ -34,6 +41,7 @@ public class Calculator {
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
+
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
@@ -45,9 +53,11 @@ public class Calculator {
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if (!screen.endsWith(".")) screen = screen + ".";
     }
-
+    /*if(Double.toString(latestValue)){//screen.substring pos 2 = komma
+        dann neue variable, in die latest value eingelesen und aufaddiert wird
+    }*/
     public void pressNegativeKey() { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
@@ -62,5 +72,8 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+
+        }
+
+
     }
-}

@@ -65,7 +65,9 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    void testDurchNullTeilenZeigtError() {
+    @Test
+    @DisplayName("Divide by 0")
+    void divideByZero() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(6);
