@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -54,5 +55,19 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should display correct square root")
+    void testSquareRoot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("root");
+
+        String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
