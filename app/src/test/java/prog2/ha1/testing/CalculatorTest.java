@@ -66,6 +66,40 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /*
+     *
+     * Erster roter Test.
+     * Dieser Test testet die Multiplikation von mehreren Faktoren
+     *
+     * */
+
+    @Test
+    @DisplayName("should display result after multiplication several factors")
+    void TestNegativeDivision() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(0);
+
+        calc.pressEqualsKey();
+
+
+        String expected = "8000";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
 }
 
 
