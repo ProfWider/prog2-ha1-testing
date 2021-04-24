@@ -18,6 +18,7 @@ public class Calculator {
 
       //if(screen.equals("0")) screen = "";
 
+
         if(latestOperation.isEmpty()) {
             if("0".equals(screen)){
                 screen = String.valueOf(digit);
