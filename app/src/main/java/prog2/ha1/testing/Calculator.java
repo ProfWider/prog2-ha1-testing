@@ -38,7 +38,12 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        double result;
+        result = switch (operation) {
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException("Taste unbekannt");
+        };
+        screen = String.format("%.2f", result);
     }
 
 
