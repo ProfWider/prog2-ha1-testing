@@ -1,6 +1,7 @@
 package prog2.ha1.testing;
 
-// behaviour inspired by https://www.online-calculator.com/
+// behaviour inspired by https://www.online-calcula
+// tor.com/
 public class Calculator {
 
     private String screen = "0";
@@ -37,8 +38,14 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        double result;
+        result = switch (operation) {
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException("Taste unbekannt");
+        };
+        screen = String.format("%.2f", result);
     }
+
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
@@ -49,14 +56,24 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
+        double result;
+        result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        if (Double.isInfinite(result)) {
+            screen = "Error";
+        }
+        else
+            screen = Double.toString(result);
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }
+
+
+
