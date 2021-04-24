@@ -66,5 +66,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display result after pressing '1/x' sign")
+    void testKehrwert() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressUnaryOperationKey("1/x");
+        String expected = "0.125";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
