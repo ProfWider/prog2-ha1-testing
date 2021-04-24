@@ -33,13 +33,21 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+
         latestOperation = operation;
+
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        latestOperation = operation;
 
+        if (operation == "1/x") {
+            double result = 1 / Double.parseDouble(screen);
+
+            screen = Double.toString(result);
+
+        }
     }
-
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
@@ -58,5 +66,8 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if(screen == "Infinity"){
+            screen="error";
+        }
     }
 }
