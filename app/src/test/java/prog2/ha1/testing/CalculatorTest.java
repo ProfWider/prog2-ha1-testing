@@ -85,44 +85,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    /*
-    @Test
-    @DisplayName("should display result after adding one negative number to a positive")
-    void testNegativeAddition() {
-        Calculator calc = new Calculator();
-
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3);
-        calc.pressEqualsKey();
-
-        String expected = "-6";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-    */
-
     @Test
     @DisplayName("should display result after calculating numbers with dots")
     void testNumbersWithCommas() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        //assertEquals("4", calc.readScreen());
         calc.pressDotKey();
         calc.pressDigitKey(5);
-        //assertEquals("5", calc.readScreen());
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(4);
-        //assertEquals("4", calc.readScreen());
         calc.pressDotKey();
-        calc.pressDigitKey(6);
-        //assertEquals("5", calc.readScreen());
+        calc.pressDigitKey(7);
         calc.pressEqualsKey();
-
-        String expected = "9.1";
+        String expected = "9.2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
