@@ -37,6 +37,18 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should clear all latest values and inputs by pressing the CE button")
+    void testClearAllValues() {
+        Calculator calc = new Calculator();
+
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     //TODO hier weitere Tests erstellen
 }
 
