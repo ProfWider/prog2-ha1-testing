@@ -84,10 +84,10 @@ class CalculatorTest {
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        //String expected = "5";
+        String expected = "5";
         String actual = calc.readScreen();
 
-       // assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
     @Test
     @DisplayName("should display the 1/x after giving the calc a number")
