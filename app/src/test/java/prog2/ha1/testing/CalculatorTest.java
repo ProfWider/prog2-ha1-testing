@@ -55,8 +55,8 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("ds Ergebnis von (-5)-(-3)=  ")
-    void testNegativZalh() {
+    @DisplayName("zahlen mit komma eintippen ")
+    void testMitKommaEintippen() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
