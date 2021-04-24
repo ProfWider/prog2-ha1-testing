@@ -63,6 +63,33 @@ class CalculatorTest {
     }
 
 
+    //First Red Test
+
+    @Test
+    @DisplayName("should display result after addition of two floating point numbers")
+    void testAdditionFloats() {
+        Calculator calc = new Calculator();
+
+        //Test Eingaben
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        //Erwartetetes Ergebnis
+        String expected = "10";
+        String actual = calc.readScreen();
+
+        //Vergleich
+        assertEquals(expected, actual);
+
+    }
+
+
 
 
 }
