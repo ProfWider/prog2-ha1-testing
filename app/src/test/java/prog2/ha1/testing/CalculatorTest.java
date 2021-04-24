@@ -9,21 +9,15 @@ class CalculatorTest {
 
     //fail
     @Test
-    @DisplayName("should display result after addition with dot ")
-    void calculatorCanDoAdditionWithDot()
+    @DisplayName("should display number negative")
+    void calculatorCanDoNegative()
     {
         Calculator calc = new Calculator();
-
-        calc.pressDigitKey(5);
-        calc.pressDotKey();
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(3);
-        calc.pressDotKey();
-        calc.pressDigitKey(5);
-        calc.pressEqualsKey();
-        assertEquals("8.7", calc.readScreen());
+        calc.pressNegativeKey();
+        assertEquals("-3", calc.readScreen());
         System.out.println(calc.readScreen());
     }
+
 }
 
