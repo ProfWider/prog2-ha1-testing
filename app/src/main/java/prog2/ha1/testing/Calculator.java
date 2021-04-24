@@ -14,8 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-//        zeile 17 gelöscht test2
-
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
         if(screen.equals("0")) screen = "";
 
         if(latestOperation.isEmpty()) {
@@ -56,6 +55,7 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
+        
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);

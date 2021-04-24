@@ -55,16 +55,17 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("das Ergebnis von 30 mal 20 macht 600 ")
-    void test2Zahlen() {
+    @DisplayName("ds Ergebnis von (-5)-(-3)=  ")
+    void testNegativZalh() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(30);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(20);
-        calc.pressEqualsKey();
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(3);
 
-        String expected = "600";
+        calc.pressEqualsKey();
+        String expected = "5.3";
+
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -75,7 +76,9 @@ class CalculatorTest {
     void test3Root() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(144);
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(4);
+        calc.pressDigitKey(4);
         calc.pressUnaryOperationKey("root");
         String expected = "12.0";
         String actual = calc.readScreen();
