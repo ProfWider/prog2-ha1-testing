@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after adding two positive numbers")
+    @DisplayName("should display result after multiplying two positive numbers")
     void testTeilaufgabe1() {
         Calculator calc = new Calculator();
 
@@ -54,6 +54,35 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display the percentage of the input number")
+    void testTeilaufgabe2a() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(50);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(15);
+        calc.pressUnaryOperationKey("%");
+        calc.pressEqualsKey();
+
+        String expected = "7.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should erase the numbers to 0")
+    void testTeilaufgabe2b() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1337);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
