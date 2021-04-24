@@ -37,7 +37,7 @@ public class Calculator {
         latestOperation = operation;
     }
 
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x    // Operanden fehlen, Methode schreiben?
+    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
     }
 

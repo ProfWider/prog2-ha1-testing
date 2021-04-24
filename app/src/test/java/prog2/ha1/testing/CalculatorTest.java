@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorTest {
 
     @Test
-    @DisplayName("should display correct number after pressing digit keys")
+    @DisplayName("should display correct number after pressing digit keys") // Displayanzeige
     void testDigitInput() {
         Calculator calc = new Calculator();
 
@@ -22,7 +22,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding two positive numbers")
+    @DisplayName("should display result after adding two positive numbers") // Addition
     void testPositiveAddition() {
         Calculator calc = new Calculator();
 
@@ -38,9 +38,10 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    // Teilaufgabe 1
 
     @Test
-    @DisplayName("should display result after subtracting two positive numbers") // - Rechnen
+    @DisplayName("should display result after subtracting two positive numbers") // Subtraktion
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
@@ -50,6 +51,24 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    // Teilaufgabe 2
+
+    @Test
+    @DisplayName("should display result after calculating percentage of numbers") // Prozentzeichen
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("%");
+        calc.pressEqualsKey();
+
+        String expected = "0.66";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
