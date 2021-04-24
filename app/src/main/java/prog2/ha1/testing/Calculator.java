@@ -9,22 +9,14 @@ public class Calculator {
 
     private String latestOperation = "";
 
-    public String readScreen() { // was steht jetzt auf dem Bildschirm
+    public String readScreen() {
         return screen;
     }
-
-    public void pressDigitKey(int digit) { // also die Tasten 0-9
+    public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
-
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
             screen = screen + digit;
-        } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
-        }
     }
+
 
     public void pressClearKey() { // die Taste CE
         screen = "0";
@@ -34,6 +26,8 @@ public class Calculator {
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
+        latestValue = Double.parseDouble(screen);
+        screen = "";
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
@@ -60,3 +54,4 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
+
