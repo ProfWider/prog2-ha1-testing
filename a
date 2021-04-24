@@ -1,0 +1,83 @@
+[33mcommit c627b8eedf839773daefbd3dfd44b67a982dac5a[m[33m ([m[1;36mHEAD -> [m[1;32mha1[m[33m, [m[1;31morigin/ha1[m[33m)[m
+Author: maurizWeymann <s0528279@htw-berlin.de>
+Date:   Sat Apr 24 23:32:33 2021 +0200
+
+    #2 test GREEN - square root implemented QUELLANGABEN
+
+[33mcommit 0b5624b861c8cde5c9aeb58925719e6400d2b779[m
+Author: maurizWeymann <s0528279@htw-berlin.de>
+Date:   Sat Apr 24 23:21:33 2021 +0200
+
+    #2 test GREEN - square root implemented
+
+[33mcommit c09de71c5563a4ba41223df5cc2f26496167e038[m
+Author: maurizWeymann <s0528279@htw-berlin.de>
+Date:   Sat Apr 24 20:09:49 2021 +0200
+
+     #2 test RED - square root not implement
+
+[33mcommit 2a254b922beab5e453c9cc7da986067643cbf4e1[m
+Author: maurizWeymann <s0528279@htw-berlin.de>
+Date:   Sat Apr 24 19:59:11 2021 +0200
+
+    #2 test RED - positiveDevision not implemented
+
+[33mcommit c3977005f82163ae3f9c568b3599c2ddea441b75[m
+Author: maurizWeymann <s0528279@htw-berlin.de>
+Date:   Sat Apr 24 18:19:00 2021 +0200
+
+    Test #1 - CE button
+
+[33mcommit 111137d88fee2de253e16507a0d3298df7ed7dcf[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Tue Apr 13 12:27:09 2021 +0200
+
+    adds exercise description, one more example test
+
+[33mcommit c68c6b6403a9ee927ffd5589619b5e4d62ce8dbc[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Tue Apr 13 11:07:50 2021 +0200
+
+    rename method and test
+
+[33mcommit 09cbaebf4177234b14571b39b9547000babb8cd5[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Mon Apr 12 23:07:34 2021 +0200
+
+    a calculator, buggy and poorly tested
+
+[33mcommit 42320ddd578768acfb5079555f2022ce58b6560d[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Mon Apr 12 21:58:50 2021 +0200
+
+    adds gradle wrapper jar
+
+[33mcommit f71b5a03223103407961d64e199b28bf658e9e7a[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Mon Apr 12 21:55:44 2021 +0200
+
+    adds execution permission to gradle wrapper
+
+[33mcommit c1b3b2b9bbb29b2458476f9228651440a870d398[m
+Author: Prof. Dr. Arif Wider <71143553+ProfWider@users.noreply.github.com>
+Date:   Mon Apr 12 21:52:52 2021 +0200
+
+    sets up basic ci
+
+[33mcommit f0ec0043086d61fbd1d6d6033415075d3563b448[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Mon Apr 12 21:42:27 2021 +0200
+
+    use gradle plugin for nicer output when running tests
+
+[33mcommit 22a506dd0244b5b8982e70ea8a119554c97fec04[m
+Author: Prof. Dr. Arif Wider <wider@htw-berlin.de>
+Date:   Mon Apr 12 21:31:43 2021 +0200
+
+    generated project with gradle init
+
+[33mcommit e4c3de92b58042273b84e3ea6e805fee105b187b[m
+Author: Prof. Dr. Arif Wider <71143553+ProfWider@users.noreply.github.com>
+Date:   Mon Apr 12 20:43:29 2021 +0200
+
+    Initial commit
