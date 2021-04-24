@@ -5,6 +5,8 @@ public class Calculator {
 
     private String screen = "0";
 
+    public boolean doubleoperation = false;
+
     private double latestValue;
 
     private String latestOperation = "";
@@ -30,14 +32,38 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        doubleoperation = false;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if (doubleoperation){
+            calculate();
+        }
         latestOperation = operation;
+        doubleoperation = true;
     }
 
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+    public void calculate(){
+        var result = switch(latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+    }
 
+
+
+    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        if (operation == "%") {
+            screen = Double.toString(Double.parseDouble(screen) / 100);
+            if (screen.endsWith(".0")) {
+                screen = screen.substring(0, screen.length() - 2);
+            }
+
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -49,14 +75,19 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
+        calculate();
+        doubleoperation = false;
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 }
+
+
+// var result = switch(latestOperation) {
+         //   case "+" -> latestValue + Double.parseDouble(screen);
+           // case "-" -> latestValue - Double.parseDouble(screen);
+            //case "x" -> latestValue * Double.parseDouble(screen);
+            //case "/" -> latestValue / Double.parseDouble(screen);
+            //default -> throw new IllegalArgumentException();
+        //};
+        //screen = Double.toString(result);
+        //if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
