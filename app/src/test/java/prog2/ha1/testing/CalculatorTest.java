@@ -57,5 +57,23 @@ class CalculatorTest {
 
     }
 
+    //neuer roter Test 1
+
+    @Test
+    @DisplayName("should display result after divide a positive number with 0")
+    void testDivisionWith0() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error"; //Infinity?
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
