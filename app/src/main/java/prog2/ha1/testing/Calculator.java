@@ -41,6 +41,7 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
         var result = switch(operation) {
             case "sqrt" -> Math.sqrt(Double.parseDouble(screen)); //Double.parseDouble() aus meth pressDigitKey
+            case "recip" -> (1 / (Double.parseDouble(screen)));
             default -> throw new IllegalArgumentException();
         };
         // QuellIdee https://www.youtube.com/watch?v=KLvnQhdx4BI Java: formatting numbers with NumberFormat

@@ -70,10 +70,10 @@ class CalculatorTest {
     void test() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(6);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("recip");
 
-        String expected = "1,16666667";
+        String expected = "0,11111111";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
