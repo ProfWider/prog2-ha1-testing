@@ -50,6 +50,7 @@ public class Calculator {
 
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {
+            case "1/x"-> latestValue + Double.parseDouble(screen);
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
