@@ -43,12 +43,12 @@ class CalculatorTest {
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(6);
         calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "6";
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
