@@ -3,7 +3,7 @@ package prog2.ha1.testing;
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
-    private String screen = "0";
+    private java.lang.String screen = "0";
 
     private double latestValue;
 
@@ -37,6 +37,12 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch (operation){
+            case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+
+        };
+        screen = Double.toString(result);
 
     }
 
@@ -59,4 +65,5 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }
