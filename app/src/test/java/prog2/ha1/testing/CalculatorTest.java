@@ -70,5 +70,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("test number inverse")
+    void testNumberInverse() {
+        var c = new Calculator();
+
+        c.pressDigitKey(1);
+        c.pressDigitKey(0);
+        c.pressUnaryOperationKey("1/x");
+
+        String expected = "0.1";
+        String actual = c.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
