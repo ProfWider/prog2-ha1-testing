@@ -18,6 +18,8 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
+        if(screen.equals("-0")) screen = "-";
+
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
