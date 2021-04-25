@@ -1,17 +1,12 @@
 package prog2.ha1.testing;
 
 
-import java.util.Objects;
-
-import static java.lang.Double.NaN;
-
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
     private String screen = "0";
 
-    private double firstValue;
-    private double secondValue;
+    private double latestValue;
 
     private String latestOperation = "";
 
@@ -27,7 +22,7 @@ public class Calculator {
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
-            firstValue = Double.parseDouble(screen);
+            latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
     }
@@ -35,7 +30,7 @@ public class Calculator {
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";
-        firstValue = 0.0;
+        latestValue = 0.0;
     }
 
     private boolean error(Double val) {
@@ -72,12 +67,11 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        secondValue = Double.parseDouble(screen);
         Double result = switch(latestOperation) {
-            case "+" -> firstValue + Double.parseDouble(screen);
-            case "-" -> firstValue - Double.parseDouble(screen);
-            case "x" -> firstValue * Double.parseDouble(screen);
-            case "/" -> dividieren(firstValue);
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> dividieren(latestValue);
             default -> throw new IllegalArgumentException();
         };
         updateScreen(result);
