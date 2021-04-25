@@ -42,7 +42,20 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
+        if (latestOperation == "")
         latestOperation = operation;
+        else{
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + value;
+                case "-" -> latestValue - value;
+                case "x" -> latestValue * value;
+                case "/" -> latestValue / value;
+                default -> throw new IllegalArgumentException();
+            };
+            latestOperation = operation;
+            latestValue = result;
+            count = 0;
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel(√), %, 1/x
