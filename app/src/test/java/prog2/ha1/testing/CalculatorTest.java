@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
-class CalculatorTest {
+class CalculatorTest
+{
 
     @Test
     @DisplayName("should display correct number after pressing digit keys")
-    void testDigitInput() {
+    void testDigitInput()
+    {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
@@ -23,7 +25,8 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after adding two positive numbers")
-    void testPositiveAddition() {
+    void testPositiveAddition()
+    {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -41,7 +44,8 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
-    void testTeilaufgabe1() {
+    void testTeilaufgabe1()
+    {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
@@ -54,32 +58,82 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
-    @DisplayName("should display the percentage of the input number")
-    void testTeilaufgabe2a() {
+    @DisplayName("should erase the calculator screen to zero")
+    void testClearKey()
+    {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(50);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(15);
-        calc.pressUnaryOperationKey("%");
-        calc.pressEqualsKey();
+        calc.pressDigitKey(9);
+        calc.pressClearKey();
 
-        String expected = "7.5";
+        String expected = "0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("should erase the numbers to 0")
-    void testTeilaufgabe2b() {
+    @DisplayName("should display a dot on the calculator screen")
+    void testDotKey()
+    {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(1337);
-        calc.pressClearKey();
+        calc.pressDigitKey(9);
+        calc.pressDotKey();
+        calc.pressDigitKey(1);
 
-        String expected = "0";
+        String expected = "9.1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should turn a digit into a negative number")
+    void testNegativeKey()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressNegativeKey();
+
+        String expected = "-6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("unary operators should work properly")
+    void testTeilaufgabe2a()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("root");
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("you should be able to calculate with multiple operators")
+    void testTeilaufgabe2b()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+
+        String expected = "30";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
