@@ -69,5 +69,23 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    @DisplayName("should show the result as double with a komma ")
+    void testDotOperator() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDotKey(".");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        String expected = "10.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
