@@ -61,9 +61,21 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
 
-        screen = Double.toString(result);
+        if (resultCheck(result)) {
+            return;
+        } else {
+            screen = Double.toString(result);
+        }
 
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+    }
+    public boolean resultCheck(double result) {
+        if(Double.isInfinite(result)) {
+            screen = "Error";
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
