@@ -20,10 +20,17 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
-        } else {
             latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
         }
+        else {
+            if(screen.equals("")) {
+                screen = Integer.toString(digit);
+            }
+            else {
+                screen = screen + digit;
+            }
+        }
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -34,10 +41,18 @@ public class Calculator {
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
+        screen = "";
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
+        screen = "";
+        var result = switch(latestOperation) {
+            case "%" -> latestValue / 100;
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
