@@ -1,11 +1,17 @@
 package prog2.ha1.testing;
 
+
+import java.util.Objects;
+
+import static java.lang.Double.NaN;
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
     private String screen = "0";
 
-    private double latestValue;
+    private double firstValue;
+    private double secondValue;
 
     private String latestOperation = "";
 
@@ -21,7 +27,7 @@ public class Calculator {
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
-            latestValue = Double.parseDouble(screen);
+            firstValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
     }
@@ -29,7 +35,11 @@ public class Calculator {
     public void pressClearKey() { // die Taste CE
         screen = "0";
         latestOperation = "";
-        latestValue = 0.0;
+        firstValue = 0.0;
+    }
+
+    private boolean error(Double val) {
+        return Double.isNaN(val) || Double.isInfinite(val);
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
@@ -37,7 +47,20 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        double number = Double.parseDouble(screen);
+        Double result = switch(operation) {
+            case "1/x" -> dividieren(1, number);
+            case "%" -> number / 100;
+            case "√" -> Math.sqrt(number);
+            default -> throw new IllegalArgumentException();
+        };
+        updateScreen(result);
+    }
 
+    private void updateScreen(Double result) {
+        if (error(result)) screen = "Error";
+        else screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -49,21 +72,23 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
+        secondValue = Double.parseDouble(screen);
         Double result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> dividieren(latestValue);
+            case "+" -> firstValue + Double.parseDouble(screen);
+            case "-" -> firstValue - Double.parseDouble(screen);
+            case "x" -> firstValue * Double.parseDouble(screen);
+            case "/" -> dividieren(firstValue);
             default -> throw new IllegalArgumentException();
         };
-        if (result == null) screen = "Error";
-        else screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        updateScreen(result);
     }
 
     private Double dividieren(double dividend) {
         double divisor = Double.parseDouble(screen);
-        if (divisor == 0.0) return null;
+        return dividend / divisor;
+    }
+
+    private Double dividieren(double dividend, double divisor) {
         return dividend / divisor;
     }
 
