@@ -43,11 +43,9 @@ class CalculatorTest {
     @DisplayName("should display result after subtracting two positive numbers")
     void testSubtraction() {
         Calculator calc = new Calculator();
-
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(9);
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
         String expected = "3";
