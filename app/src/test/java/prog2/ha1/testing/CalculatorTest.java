@@ -61,12 +61,16 @@ class CalculatorTest {
 
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("Wurzel");
-        calc.pressEqualsKey();
+
 
         String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
+
+
+
 }
 
