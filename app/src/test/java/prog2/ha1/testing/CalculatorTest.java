@@ -41,7 +41,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display result after subtracting two positive numbers")
+    @DisplayName("should display result after multiplying two positive numbers")
     void testPositivMultiplication(){
         Calculator calc = new Calculator();
 
@@ -57,18 +57,34 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after adding more then one positive number")
-    void testPositivMultipleAddition() {
+    @DisplayName("should display result after subtracting more then one positive number")
+    void testPositivMultipleSubstraction() {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(3);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3);
-        calc.pressBinaryOperationKey("+");
+        calc.pressBinaryOperationKey("-");
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "9";
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after calculating the squareroot")
+    void testPositiveSquareRooting() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(16);
+        calc.pressUnaryOperationKey("√");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "4";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
