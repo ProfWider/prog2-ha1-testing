@@ -36,11 +36,14 @@ public class Calculator {
         latestOperation = operation;
     }
 
-    public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+    public void pressUnaryOperationKey(String operation) { latestOperation = operation; }
 
-    }
 
-    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+    public void pressDotKey(String komma) {
+        if(komma == "." || komma == "," )
+            screen = screen + "." ;
+        else throw new IllegalArgumentException();
+
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
@@ -52,7 +55,7 @@ public class Calculator {
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
+            case "x","*" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
