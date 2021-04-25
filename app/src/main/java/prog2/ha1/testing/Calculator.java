@@ -1,5 +1,7 @@
 package prog2.ha1.testing;
 
+import static java.lang.String.valueOf;
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -38,6 +40,17 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        if (operation == "sqroot"){
+            //double squareroot = Math.sqrt(Integer.parseInt(screen));
+            double sqRoot = Math.sqrt(Double.parseDouble(screen));
+            screen = Double.toString(sqRoot);
+        }
+
+        if(operation == "1/x"){
+            double dvsnone = 1/Double.parseDouble(screen);
+            screen = Double.toString(dvsnone);
+        }
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @DisplayName("Retro calculator")
 class CalculatorTest {
 
@@ -48,28 +49,26 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String erwartet = "2";
-        String ergebnis = calc.readScreen();
+        String expected = "2";
+        String actual = calc.readScreen();
 
-        assertEquals(erwartet, ergebnis);
+        assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("sould display the squareroot of the number wich was inserted")
 
-    void testSquareroot(){
+    void testSquareRoot(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
 
-        calc.pressUnaryOperationKey("sqrert");
-        calc.pressEqualsKey();
-
+        calc.pressUnaryOperationKey("sqroot");
 
         String expected = "2";
-        String result = calc.readScreen();
+        String actual = calc.readScreen();
 
-        assertEquals(expected, result);
+        assertEquals(expected, actual);
 
     }
 
@@ -86,9 +85,9 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected  = "0";
-        String result =  calc.readScreen();
+        String actual =  calc.readScreen();
 
-        assertEquals(expected, result);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -97,14 +96,12 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressUnaryOperationKey("DvsnOne");
+        calc.pressUnaryOperationKey("1/x");
 
         String expected = "0.5";
-        String result = calc.readScreen();
+        String actual = calc.readScreen();
 
-        assertEquals(expected, result);
+        assertEquals(expected, actual);
     }
-
-
 }
 
