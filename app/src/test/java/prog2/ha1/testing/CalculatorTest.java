@@ -53,5 +53,58 @@ class CalculatorTest {
 
         assertEquals(erwartet, ergebnis);
     }
+
+    @Test
+    @DisplayName("sould display the squareroot of the number wich was inserted")
+
+    void testSquareroot(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+
+        calc.pressUnaryOperationKey("sqrert");
+        calc.pressEqualsKey();
+
+
+        String expected = "2";
+        String result = calc.readScreen();
+
+        assertEquals(expected, result);
+
+    }
+
+    @Test
+    @DisplayName("should subtract two negative numbers from eachother so that the sign changes and it turns into addition")
+    void testSubtractionOfNegativeNumbers(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressNegativeKey();
+        calc.pressEqualsKey();
+
+        String expected  = "0";
+        String result =  calc.readScreen();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("should divide the number '1'  with the number that was put in by the user")
+    void testDivisionFunctionByOne(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("DvsnOne");
+
+        String expected = "0.5";
+        String result = calc.readScreen();
+
+        assertEquals(expected, result);
+    }
+
+
 }
 
