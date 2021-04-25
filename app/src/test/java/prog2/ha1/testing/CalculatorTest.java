@@ -40,7 +40,7 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
 
-
+    // first green test with multiply function 
     @Test
     @DisplayName("should display result after multiplying two positive numbers")
         // green test other functionality tested
@@ -63,7 +63,7 @@ class CalculatorTest {
         calc.pressDotKey();
         calc.pressEqualsKey();
         assertEquals("0", calc.readScreen());
-    } */
+    }
 
     @Test
     @DisplayName("should display result after dividing by a floating number")
@@ -71,12 +71,14 @@ class CalculatorTest {
     void calculatorCanDoDivByFloating() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(5);
+        calc.pressDotKey();
+        calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(2);
         calc.pressDotKey();
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
         assertEquals("2", calc.readScreen());
-    } //
+    } */
 }
 
