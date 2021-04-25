@@ -33,6 +33,7 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
