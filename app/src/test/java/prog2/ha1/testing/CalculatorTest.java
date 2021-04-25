@@ -38,5 +38,24 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+      //Funktionierender Test
+    @Test
+    @DisplayName("should display result 6 ")
+    void testPedmasRule() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "6";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
