@@ -80,9 +80,10 @@ class CalculatorTest {
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(7);
         calc.pressEqualsKey();
+        calc.pressUnaryOperationKey("%");
 
 
-        String expected = "16";
+        String expected = "0.16";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
