@@ -39,7 +39,10 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { latestOperation = operation; }
 
 
-    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+    public void pressDotKey(String komma) {
+        if(komma == "." || komma == "," )
+            screen = screen + "." ;
+        else throw new IllegalArgumentException();
 
         if(!screen.endsWith(".")) screen = screen + ".";
     }
