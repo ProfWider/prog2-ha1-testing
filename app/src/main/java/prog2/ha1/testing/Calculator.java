@@ -33,7 +33,20 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-        latestOperation = operation;
+        if(latestOperation.equals("")) {
+            latestOperation = operation;
+        }else{
+            var result = switch(latestOperation) {
+                case "+" -> latestValue = latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue = latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue = latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue = latestValue / Double.parseDouble(screen);
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(result);
+            if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+            latestOperation = operation;
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
