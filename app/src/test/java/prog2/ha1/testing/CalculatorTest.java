@@ -58,9 +58,9 @@ class CalculatorTest {
     void testPercentage() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(99);
+        calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("%");
-        String expected = ".99";
+        String expected = "0.09";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
