@@ -68,18 +68,19 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("Dot Key Test.")
-    void DotKey() {
+    @DisplayName("Division with Zero Test.")
+    void DivisionWithZero() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(8);
-        calc.pressDotKey();
-        calc.pressDigitKey(8);
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
 
-        String expected = "8.8";
+        String expected = "Error";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
-        //assertEquals(expected, actual);
+
     }
 }
 
