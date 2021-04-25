@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -32,12 +33,29 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+    private boolean error(Double val) {
+        return Double.isNaN(val) || Double.isInfinite(val);
+    }
+
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        double number = Double.parseDouble(screen);
+        Double result = switch(operation) {
+            case "1/x" -> dividieren(1, number);
+            case "%" -> number / 100;
+            case "√" -> Math.sqrt(number);
+            default -> throw new IllegalArgumentException();
+        };
+        updateScreen(result);
+    }
 
+    private void updateScreen(Double result) {
+        if (error(result)) screen = "Error";
+        else screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -49,14 +67,23 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
+        Double result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
+            case "/" -> dividieren(latestValue);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        updateScreen(result);
     }
+
+    private Double dividieren(double dividend) {
+        double divisor = Double.parseDouble(screen);
+        return dividend / divisor;
+    }
+
+    private Double dividieren(double dividend, double divisor) {
+        return dividend / divisor;
+    }
+
 }
