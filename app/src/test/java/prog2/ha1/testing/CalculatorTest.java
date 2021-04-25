@@ -54,7 +54,20 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("division a number with zero")
+    void testDivisionwithZero() {
+        Calculator calc = new Calculator();
+
+//
 
 
-}
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+
+
 
