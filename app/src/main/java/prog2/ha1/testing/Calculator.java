@@ -16,9 +16,13 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+        //nur wenn screen 0 und latestoperation leer ist, wird screen auf "" gesetzt
+        if(screen.equals("0") && latestOperation.isEmpty()) screen = "";
 
-
+        //nur wenn screen 0 und latestoperation nicht leer ist, wird screen + digit genommen und angezeigt
+        if(screen.equals("0") && !latestOperation.isEmpty()){
+            screen = screen + digit;
+        }
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -30,8 +34,9 @@ public class Calculator {
 
     public void pressClearKey() { // die Taste CE
         screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        //müssen rausgenommen werden damit clear taste wie in der online version funktioniert
+        //latestOperation = "";
+        //latestValue = 0.0;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
