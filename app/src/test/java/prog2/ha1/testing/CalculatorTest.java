@@ -69,5 +69,21 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display, calculate correctly float number")
+    void testRationalZahl() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressDotKey(".");
+        calc.pressDigitKey(9);
+        calc.pressDotKey(".");
+
+
+        String expected = "9.9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
+
 

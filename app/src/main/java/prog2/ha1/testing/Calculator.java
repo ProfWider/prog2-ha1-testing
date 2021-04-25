@@ -63,11 +63,11 @@ public class Calculator {
 
     }
 
-    public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+    public void pressDotKey(String s) { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
 
-    public void pressNegativeKey() { // die +/- Taste
+    public void pressNegativeKey(String s) { // die +/- Taste
         screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
     }
 
