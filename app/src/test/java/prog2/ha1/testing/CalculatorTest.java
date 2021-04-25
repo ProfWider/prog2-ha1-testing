@@ -73,5 +73,20 @@ class CalculatorTest {
 
         System.out.println("ergebnis" + "=" + calc.readScreen());
     }
+    @Test
+    @DisplayName("should multiply two times in a row ")
+    void calculatorCanMultiplyTwoTimesInaRow() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        String expected = "27";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+        System.out.println("ergebnis" + "=" + calc.readScreen());
+    }
 }
 
