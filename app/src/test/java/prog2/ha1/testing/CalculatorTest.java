@@ -38,5 +38,49 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Display the multiplication between numbers.")
+    void testMultiplikation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "64";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Squareroot Test")
+    void testSquereroot() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressUnaryOperationKey("Wurzel");
+
+
+        String expected = "3";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Division with Zero Test.")
+    void DivisionWithZero() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+
+    }
 }
 

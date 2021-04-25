@@ -1,5 +1,6 @@
 package prog2.ha1.testing;
 
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -32,11 +33,15 @@ public class Calculator {
         latestValue = 0.0;
     }
 
+
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        double a =  Math. sqrt(Double.parseDouble(screen));
+        int b = (int) a;
+        screen = Integer.toString(b);
 
     }
 
@@ -56,7 +61,23 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+
+        if (resultCheck(result)) {
+            return;
+        } else {
+            screen = Double.toString(result);
+        }
+
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+    public boolean resultCheck(double result) {
+        if(Double.isInfinite(result)) {
+            screen = "Error";
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
