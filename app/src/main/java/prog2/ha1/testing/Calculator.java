@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(digit > 9 || digit < -9) throw new IllegalArgumentException();
 
         if(screen.equals("0")) screen = "";
 
@@ -24,6 +24,8 @@ public class Calculator {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
+
+
     }
 
     public void pressClearKey() { // die Taste CE
@@ -38,6 +40,9 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+      if("%".equals(operation)){
+          screen=String.valueOf(Double.parseDouble(screen)/100);
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -56,7 +61,10 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
+
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }
