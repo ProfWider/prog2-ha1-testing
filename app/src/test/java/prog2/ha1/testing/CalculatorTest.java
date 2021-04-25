@@ -54,6 +54,26 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display 1/x after pressing 1/x button")
+    void test1X() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/X");
+        String expected = "0.2";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("should display x / 100 after pressing % button")
+    void test100() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+        String expected = "0.05";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 
 }
 
