@@ -87,7 +87,7 @@ class CalculatorTest {
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "0,66666667"; // 8 Nachkommastellen,  an der 8 Stelle aufrunden
+        String expected = "0.66666667"; // 8 Nachkommastellen,  an der 8 Stelle aufrunden
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
