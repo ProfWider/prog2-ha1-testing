@@ -55,6 +55,7 @@ public class Calculator {
         return false;
     }
 
+
     public void pressEqualsKey() { // die Taste =
         if(control() == true){
             screen = "Nicht möglich";
