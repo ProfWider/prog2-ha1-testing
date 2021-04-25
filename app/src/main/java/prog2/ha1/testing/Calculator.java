@@ -20,6 +20,9 @@ public class Calculator {
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
+            }
+        else if (latestValue !=0) {
+            screen = screen + digit;
         } else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
@@ -33,7 +36,6 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
-
         latestOperation = operation;
     }
 
@@ -61,6 +63,7 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if(screen.endsWith(".0"))
+            screen = screen.substring(0,screen.length()-2);
     }
 }
