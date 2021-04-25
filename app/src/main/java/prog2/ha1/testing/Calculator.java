@@ -2,6 +2,10 @@ package prog2.ha1.testing;
 
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
+//Test für Commit
+    int a=4;
+
+    public boolean mutipleSubstraction = false;
 
     private String screen = "0";
 
@@ -30,14 +34,24 @@ public class Calculator {
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
+        mutipleSubstraction = false;
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if(mutipleSubstraction){
+            pressEqualsKey();
+        }
+        mutipleSubstraction = true;
         latestOperation = operation;
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch(operation) {
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -59,4 +73,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
+
 }
