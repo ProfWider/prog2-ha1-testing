@@ -70,5 +70,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after squareroot")
+    void testSquareroot() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("√");
+        calc.pressEqualsKey();
+
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
