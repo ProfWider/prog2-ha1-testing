@@ -67,6 +67,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display result after rooting a number")
+    void testRoot() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
