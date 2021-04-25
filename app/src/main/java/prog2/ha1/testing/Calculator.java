@@ -8,7 +8,7 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
-
+    private int counter = 0;
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -16,13 +16,16 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
-            screen = screen + digit;
-        } else {
+        if (latestOperation.isEmpty()) {
+            screen += digit;
+            counter = 0;
+        } else if (counter < 1) {
             latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+            screen = "0";
+            counter += 1;
+            screen += digit;
+        } else {
+            screen += digit;
         }
     }
 
