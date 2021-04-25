@@ -54,7 +54,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after substracting two positive numbers")
+    @DisplayName("should display result after pressing the procent button")
     void testProcentNumbers() {
         Calculator calc = new Calculator();
 
