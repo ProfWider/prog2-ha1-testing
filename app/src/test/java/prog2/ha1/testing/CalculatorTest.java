@@ -38,7 +38,7 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-      //Funktionierender Test
+    //Funktionierender Test
     @Test
     @DisplayName("should display result 6 ")
     void testPedmasRule() {
@@ -57,5 +57,22 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    //nicht Funktionierender Test
+    @Test
+    @DisplayName("should display result Error and not Infinity after, for Infinity is not a real number, and even if it were, it wouldn't be the answer to dividing something by zero. There is no number that you can multiply by 0 to get a non-zero number. There is NO solution, so any non-zero number divided by 0 is undefined")
+    void testZeroError() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
 
