@@ -13,6 +13,8 @@ public class Calculator {
         return screen;
     }
 
+    public  boolean n;
+
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
@@ -36,6 +38,11 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
 
         latestOperation = operation;
+        if (n) {
+            latestOperation = "-";
+            n=true;
+
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
@@ -50,15 +57,25 @@ public class Calculator {
 
     }
 
-    public void pressNegativeKey() { // die +/- Taste
+    public void pressNegativeKey(int digit) { // die +/- Taste
 
-        //screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(screen.equals("0")) screen = "";
 
-        if(screen.startsWith("-")){
-            screen = screen.substring(1);
-        }else {
-            screen = "-" + screen;
+        if(screen.equals("0")) screen = "";
+
+
+        if(!n) {
+            screen = "-" + digit;
+            n = true;
+        } else {
+            latestValue = Double.parseDouble(screen);
+            screen = latestOperation + digit;
+            screen = Integer.toString(digit);
+            n = false;
         }
+
+
     }
 
     public void pressEqualsKey() { // die Taste =
