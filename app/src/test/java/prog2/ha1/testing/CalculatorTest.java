@@ -52,18 +52,18 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("15", calc.readScreen());
     }
-
+    /*
     @Test
-    @DisplayName("executable with none of the given operations ")
+    @DisplayName("executable with none of the given operations")
         // 1st red test
         // 1st green test
     void calculatorCanDoAddTwoFloating() {
         Calculator calc = new Calculator();
-      //  calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
         calc.pressDotKey();
         calc.pressEqualsKey();
         assertEquals("0", calc.readScreen());
-    }
+    } */
 
     @Test
     @DisplayName("should display result after dividing by a floating number")
@@ -71,12 +71,12 @@ class CalculatorTest {
     void calculatorCanDoDivByFloating() {
         Calculator calc = new Calculator();
         calc.pressDigitKey(5);
-        calc.pressOperationKey("/");
+        calc.pressBinaryOperationKey("/");
         calc.pressDigitKey(2);
         calc.pressDotKey();
         calc.pressDigitKey(5);
-        calc.pressEquals();
+        calc.pressEqualsKey();
         assertEquals("2", calc.readScreen());
-    } // 
+    } //
 }
 
