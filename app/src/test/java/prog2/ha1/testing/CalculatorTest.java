@@ -38,5 +38,91 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    //---------------------------------------------------------------------------------------------------------------
+
+    // first green test with multiply function
+    @Test
+    @DisplayName("should display result after multiplying two positive numbers")
+        // green test other functionality tested
+    void calculatorCanDoMulti() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("15", calc.readScreen());
+    }
+
+    //---------------------------------------------------------------------------------------------------------------
+    /*
+    @Test
+    @DisplayName("should display result after dividing by a floating number")
+        // 1st red test
+        // should work with result = 2.5 but u get 0.4
+    void calculatorCanDoDivByFloating() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        // the problem occurs next
+        // hard to test without intellij
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        assertEquals("2", calc.readScreen());
+    }
+
+     */
+    //---------------------------------------------------------------------------------------------------------------
+
+    // red test 1 fix
+    @Test
+    @DisplayName("should display result after dividing by a floating number")
+    // 1st red test
+    // should work with result = 2.5 but u get 0.4
+    void calculatorCanDoDivByFloating() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        // the problem occurs next
+        // hard to test without intellij
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        assertEquals("2", calc.readScreen());
+    }
+
+    //---------------------------------------------------------------------------------------------------------------
+    /*
+    //2nd red test
+    @Test
+    @DisplayName("should display result after dividing by a floating number")
+    // hmm
+    void calculatorCanDoDivByZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+        assertEquals("Error", calc.readScreen());
+
+    */
+
+    //---------------------------------------------------------------------------------------------------------------
+
+    // red test 2 fix
+        @Test
+        @DisplayName("should display result after dividing by a floating number")
+        // hmm
+        void calculatorCanDoDivByZero() {
+            Calculator calc = new Calculator();
+            calc.pressDigitKey(9);
+            calc.pressBinaryOperationKey("/");
+            calc.pressDigitKey(0);
+            calc.pressEqualsKey();
+            assertEquals("Error", calc.readScreen());
+
+    }
 }
 
