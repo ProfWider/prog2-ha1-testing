@@ -38,6 +38,9 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        if (operation=="%") {
+            screen = Double.toString(Double.parseDouble(screen) / 100);
+        }
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -56,7 +59,15 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
+
+
         screen = Double.toString(result);
+
+        if (Double.isInfinite(result)){
+            screen = "ERROR";
+
+        }
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+
     }
 }
