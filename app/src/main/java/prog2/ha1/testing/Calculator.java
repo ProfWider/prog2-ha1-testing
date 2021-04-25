@@ -7,7 +7,7 @@ public class Calculator {
 
     private double latestValue;
 
-    private String latestOperation = "";
+    private String latestOpera0ption = "";
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
@@ -37,9 +37,15 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        var result = switch (operation){
+            case "sqrt" -> Math.sqrt(Double.parseDouble(screen));
+            default -> throw new IllegalArgumentException();
+
+        };
+        screen = Double.toString(result);
 
     }
-
+//
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
@@ -59,4 +65,5 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
+
 }

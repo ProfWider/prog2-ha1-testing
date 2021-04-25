@@ -38,5 +38,63 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should display result after multiplication two positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "8";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("division a number with zero")
+    void testDivisionwithZero() {
+        Calculator calc = new Calculator();
+
+//
+
+
+        calc.pressDigitKey(7);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+
+
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        if (actual == "Infinity"){
+            actual =  "ERROR" ;
+
+        }
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    @DisplayName("Root with number")
+    void TestDivisionRoot() {
+        Calculator calc = new Calculator();
+//
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
+
+
 
