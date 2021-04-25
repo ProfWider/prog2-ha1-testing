@@ -7,7 +7,7 @@ public class Calculator {
 
     private double latestValue;
 
-    private String latestOperation = "";
+    private String latestOpera0ption = "";
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
@@ -39,7 +39,7 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
     }
-
+//
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
         if(!screen.endsWith(".")) screen = screen + ".";
     }
