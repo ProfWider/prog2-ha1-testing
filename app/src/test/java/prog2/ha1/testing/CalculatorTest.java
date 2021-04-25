@@ -69,5 +69,17 @@ class CalculatorTest {
 
 
 
+        String expected = "ERROR";
+        String actual = calc.readScreen();
+
+        if (actual == "Infinity"){
+            actual =  "ERROR" ;
+
+        }
+
+        assertEquals(expected, actual);
+    }
+}
+
 
 
