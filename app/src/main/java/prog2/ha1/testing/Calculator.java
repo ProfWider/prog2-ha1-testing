@@ -34,9 +34,11 @@ public class Calculator {
 
     public void pressClearKey() { // die Taste CE
         screen = "0";
-        //müssen rausgenommen werden damit clear taste wie in der online version funktioniert
-        //latestOperation = "";
-        //latestValue = 0.0;
+        //latestvalue wird in der online version nur auf 0 gesetzt wenn latestoperation leer ist
+        if(latestOperation.isEmpty()){
+            latestValue = 0.0;
+        }
+
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
