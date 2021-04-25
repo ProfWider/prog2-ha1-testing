@@ -69,5 +69,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
+    @Test
+    @DisplayName("should display result after edding to DotKeyNumbers")
+    void DotkeyCalculationNumbers() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(1);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+
+        String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+}
