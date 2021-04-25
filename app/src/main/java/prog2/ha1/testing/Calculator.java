@@ -44,7 +44,7 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
-        ////Lösung zur zweiten Implementierungslücke
+        //Lösung zur zweiten Implementierungslücke
         if("√".equals(operation)){
             screen = String.valueOf(Math.sqrt(Double.parseDouble(screen)));
 
