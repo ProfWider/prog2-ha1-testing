@@ -39,18 +39,18 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("Should disply negative number")
-    void testDecimalNumbers() {
+    @DisplayName("Should display  result after multiply two numbers")
+    void testMutiply() {
 
 
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(8);
-        calc.pressBinaryOperationKey("+");
+        calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "10";
+        String expected = "16";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
