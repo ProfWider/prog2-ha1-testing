@@ -18,6 +18,8 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
+        if(screen.equals("-0")) screen = "-";
+
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
         } else {
@@ -58,5 +60,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        if(screen.equals("Infinity")) screen = "Error";
+
     }
 }
