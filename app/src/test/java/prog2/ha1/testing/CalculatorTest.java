@@ -2,6 +2,7 @@ package prog2.ha1.testing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
@@ -63,7 +64,7 @@ class CalculatorTest {
 
         calc.pressDigitKey(5);
         calc.pressUnaryOperationKey("1/x");
-        calc.pressEqualsKey();
+        calc.pressEqualsKeyUnary();
         String expected = "0.2";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
@@ -71,14 +72,14 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display division with rest")
-    void moduloOperation () {
+    void moduloOperation() {
 
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
         calc.pressUnaryOperationKey("%");
         calc.pressDigitKey(2);
-        calc.pressEqualsKey();
+        calc.pressEqualsKeyUnary();
         String expected = "1";
         String actual = calc.readScreen();
         assertEquals(expected, actual);
