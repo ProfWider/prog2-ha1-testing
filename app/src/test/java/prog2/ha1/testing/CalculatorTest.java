@@ -53,5 +53,32 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after pressing the clear Key ")
+    void testWurzelKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("Wurzel");
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after pressing the clear Key ")
+    void testKehrwertKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.25";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
