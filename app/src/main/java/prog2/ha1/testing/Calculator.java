@@ -16,13 +16,11 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
         if(latestOperation.isEmpty()) {
-            screen = screen + digit;
+            if (screen.equalsIgnoreCase("0")) screen = Integer.toString(digit);
+            else screen = screen + digit;
         } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+            screen = screen + Integer.toString(digit);
         }
     }
 
@@ -33,8 +31,12 @@ public class Calculator {
     }
 
     public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+        if (latestValue != 0.0) pressEqualsKey();
         latestOperation = operation;
+        latestValue = Double.parseDouble(screen);
+        screen = "0";
     }
+
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
