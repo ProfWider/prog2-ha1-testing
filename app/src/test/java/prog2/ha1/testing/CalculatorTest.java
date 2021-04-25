@@ -52,7 +52,7 @@ class CalculatorTest {
         calc.pressEqualsKey();
         assertEquals("15", calc.readScreen());
     }
-/*
+
     @Test
     @DisplayName("executable with none of the given operations ")
         // 1st red test
@@ -77,6 +77,6 @@ class CalculatorTest {
         calc.pressDigitKey(5);
         calc.pressEquals();
         assertEquals("2", calc.readScreen());
-    } // */
+    } // 
 }
 
