@@ -19,7 +19,7 @@ public class Calculator {
         if (screen.equals("0")) screen = "";
         if (latestOperation.isEmpty()) {
             screen = screen + digit;
-        }else if(screen.endsWith(".")){ // adds second digit number after dot
+        }else if(screen.endsWith(".")){ // adds second digit number after dot.
             screen = screen + digit;
 
 
