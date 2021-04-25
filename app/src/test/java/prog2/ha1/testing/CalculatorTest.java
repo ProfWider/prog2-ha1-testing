@@ -38,5 +38,45 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+
+
+    @Test
+    @DisplayName("should display result after multiplying two positive numbers")
+        // green test other functionality tested
+    void calculatorCanDoMulti() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+        assertEquals("15", calc.readScreen());
+    }
+/*
+    @Test
+    @DisplayName("executable with none of the given operations ")
+        // 1st red test
+        // 1st green test
+    void calculatorCanDoAddTwoFloating() {
+        Calculator calc = new Calculator();
+      //  calc.pressDigitKey(0);
+        calc.pressDotKey();
+        calc.pressEqualsKey();
+        assertEquals("0", calc.readScreen());
+    }
+
+    @Test
+    @DisplayName("should display result after dividing by a floating number")
+        // 2nd red test
+    void calculatorCanDoDivByFloating() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressOperationKey("/");
+        calc.pressDigitKey(2);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+        calc.pressEquals();
+        assertEquals("2", calc.readScreen());
+    } // */
 }
 
