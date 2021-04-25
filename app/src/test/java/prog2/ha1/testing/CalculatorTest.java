@@ -79,6 +79,21 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    @DisplayName("Root with number")
+    void TestDivisionRoot() {
+        Calculator calc = new Calculator();
+//
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected = "2.0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
 
