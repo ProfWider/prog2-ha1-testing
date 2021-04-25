@@ -37,6 +37,7 @@ public class Calculator {
         screen = "0";
     }
 
+
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
     }
