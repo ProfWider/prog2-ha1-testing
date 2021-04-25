@@ -16,17 +16,21 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
-            screen = screen + digit;
-        } else {
-            latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+        if (latestOperation.isEmpty()) screen = Integer.toString(digit);
+        else {
+            if (latestValue == 0.0) {
+                latestValue = Double.parseDouble(screen);
+                if (screen.startsWith("-")) screen = '-' + Integer.toString(digit);
+                else Integer.toString(digit);
+            } else screen = screen + Integer.toString(digit);
         }
     }
 
-    public void pressClearKey() { // die Taste CE
+    public void pressClearKey() {
+        if (!latestOperation.isEmpty()) {
+            screen = "0";
+            return;
+        }
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
