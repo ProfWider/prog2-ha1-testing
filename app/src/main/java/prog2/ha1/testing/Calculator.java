@@ -1,7 +1,5 @@
 package prog2.ha1.testing;
 
-import static java.lang.String.valueOf;
-
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
@@ -41,7 +39,6 @@ public class Calculator {
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
         if (operation == "sqroot"){
-            //double squareroot = Math.sqrt(Integer.parseInt(screen));
             double sqRoot = Math.sqrt(Double.parseDouble(screen));
             screen = Double.toString(sqRoot);
         }
