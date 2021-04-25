@@ -25,7 +25,6 @@ class CalculatorTest {
     @DisplayName("should display result after adding two positive numbers")
     void testPositiveAddition() {
         Calculator calc = new Calculator();
-
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
@@ -36,6 +35,50 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display the correct result after multiplicating two positive numbers.")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should not display the correct result after ... ")
+    void testUnaryOperation() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the correct result after dividing 1 through 5")
+    void testOneDividedByX() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKey();
+
+        String expected = "0.2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 
     //TODO hier weitere Tests erstellen
 }
