@@ -8,7 +8,7 @@ public class Calculator {
     private double latestValue;
 
     private String latestOperation = "";
-
+    private int counter = 0;
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
     }
@@ -16,13 +16,16 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
-
-        if(latestOperation.isEmpty()) {
-            screen = screen + digit;
-        } else {
+        if (latestOperation.isEmpty()) {
+            screen += digit;
+            counter = 0;
+        } else if (counter < 1) {
             latestValue = Double.parseDouble(screen);
-            screen = Integer.toString(digit);
+            screen = "0";
+            counter += 1;
+            screen += digit;
+        } else {
+            screen += digit;
         }
     }
 
@@ -37,7 +40,7 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -54,6 +57,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
+            case "1/x" -> 1/Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
