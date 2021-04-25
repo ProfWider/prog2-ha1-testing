@@ -64,5 +64,19 @@ class CalculatorTest {
         System.out.println(calc.readScreen());
         assertEquals("-7", calc.readScreen());
     }
+    // Second red test
+    @Test
+    @DisplayName("should display the result after you have done the operation and then deleted a digit")
+    void calculatorAbleToUseClearKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(6);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressClearKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        System.out.println(calc.readScreen());
+        assertEquals("1", calc.readScreen());
+    }
 }
 
