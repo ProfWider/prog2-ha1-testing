@@ -16,12 +16,17 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+      //if(screen.equals("0")) screen = "";
+
 
         if(latestOperation.isEmpty()) {
-            screen = screen + digit;
+            if("0".equals(screen)){
+                screen = String.valueOf(digit);
+            }else{
+                screen = screen + String.valueOf(digit);
+            }
         } else {
-            latestValue = Double.parseDouble(screen);
+              latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
     }
@@ -37,6 +42,9 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
+        if("1/x".equals(operation)){
+            screen = String.valueOf(1/Double.parseDouble(screen));
+        }
 
     }
 
