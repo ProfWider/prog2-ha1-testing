@@ -42,15 +42,15 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display result after subtracting two positive numbers")
-    void testPositivSubstraction(){
+    void testPositivMultiplication(){
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "1";
+        String expected = "8";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
