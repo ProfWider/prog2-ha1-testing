@@ -55,6 +55,7 @@ public class Calculator {
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
             case "%" -> Double.parseDouble(screen) / 100;
+            case "√" -> Math.sqrt(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

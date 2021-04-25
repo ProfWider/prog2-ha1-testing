@@ -53,7 +53,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after multiplying two positive numbers")
+    @DisplayName("should display result after numberToPercent")
     void testNumberToPercent() {
         Calculator calc = new Calculator();
 
@@ -67,7 +67,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display result after multiplying two positive numbers")
+    void testSquareRoot() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("√");
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
     //TODO hier weitere Tests erstellen
 }
 
