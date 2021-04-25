@@ -18,9 +18,10 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if(latestOperation.isEmpty() || screen.endsWith(".")) {
             screen = screen + digit;
-        } else {
+        }
+        else {
             latestValue = Double.parseDouble(screen);
             screen = Integer.toString(digit);
         }
@@ -37,7 +38,7 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+latestOperation = operation;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -54,6 +55,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "%" ->  Double.parseDouble(screen)/100;
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
