@@ -26,7 +26,11 @@ public class Calculator {
         }
     }
 
-    public void pressClearKey() { // die Taste CE
+    public void pressClearKey() {
+        if (!latestOperation.isEmpty()) {
+            screen = "0";
+            return;
+        }
         screen = "0";
         latestOperation = "";
         latestValue = 0.0;
