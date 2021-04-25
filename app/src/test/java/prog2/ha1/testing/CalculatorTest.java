@@ -51,6 +51,18 @@ class CalculatorTest {
         assertEquals("0",calc.readScreen());
     }
 
+    @Test
+    @DisplayName("should display result after multiplying two numbers bigger than 9, and one of them is negative")
+    void calculatorCanDoMultiplyWithAllNumber() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(20);
+        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(-20);
+        calc.pressEqualsKey();
+        assertEquals("400", calc.readScreen());
+    }
+
 
 
 }
