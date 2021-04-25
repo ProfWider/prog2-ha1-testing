@@ -70,7 +70,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after edding to DotKeyNumbers")
+    @DisplayName("should display result after adding to DotKeyNumbers")
     void DotkeyCalculationNumbers() {
         Calculator calc = new Calculator();
 

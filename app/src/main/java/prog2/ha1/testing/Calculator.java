@@ -18,7 +18,7 @@ public class Calculator {
 
         if(screen.equals("0")) screen = "";
 
-        if(latestOperation.isEmpty()) {
+        if(latestOperation.isEmpty() || screen.endsWith(".")) {
             screen = screen + digit;
         }
         else {
