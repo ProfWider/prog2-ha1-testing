@@ -63,6 +63,20 @@ class CalculatorTest {
         assertEquals("400", calc.readScreen());
     }
 
+    @Test
+    @DisplayName("should display the correct number after adding two numbers, " +
+            "one of them with 1/x , diese Methode testet die Methode pressUnaryOperationKey")
+    void calculatorCanUsePressUnaryOperationKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(20);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(10);
+        calc.pressUnaryOperationKey("1/x");
+
+
+        assertEquals("20.1",calc.readScreen());
+    }
+
 
 
 }
