@@ -41,12 +41,41 @@ public class Calculator
 
     public void pressBinaryOperationKey(String operation)
     { // also die Tasten /,x,-,+
-        latestOperation = operation;
+        if (latestOperation.equals(""))
+        {
+            latestOperation = operation;
+        }
+        else
+        {
+            var result = switch(latestOperation)
+                    {
+                        case "+" -> latestValue + Double.parseDouble(screen);
+                        case "-" -> latestValue - Double.parseDouble(screen);
+                        case "x" -> latestValue * Double.parseDouble(screen);
+                        case "/" -> latestValue / Double.parseDouble(screen);
+                        default -> throw new IllegalArgumentException();
+                    };
+            screen = Double.toString(result);
+            if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+            latestOperation = operation;
+        }
     }
 
     public void pressUnaryOperationKey(String operation)
     { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
+        {
+            var result = switch(latestOperation)
+                    {
+                        case "%" -> latestValue += Double.parseDouble(screen) /100;
+                        case "root" -> latestValue += Math.sqrt(Double.parseDouble(screen));
+                        case "1/x" -> latestValue += 1/ Double.parseDouble(screen);
+                        default -> throw new IllegalArgumentException();
+                    };
+            screen = Double.toString(result);
+            if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+            latestOperation = operation;
+        }
     }
 
     public void pressDotKey()

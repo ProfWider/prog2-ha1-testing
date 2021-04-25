@@ -106,7 +106,7 @@ class CalculatorTest
     }
 
     @Test
-    @DisplayName("unary operators should work properly")
+    @DisplayName("unary operator root should work properly")
     void testTeilaufgabe2a()
     {
         Calculator calc = new Calculator();
@@ -127,13 +127,45 @@ class CalculatorTest
     {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(6);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(5);
         calc.pressBinaryOperationKey("x");
         calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
 
-        String expected = "30";
+        String expected = "5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("unary operator 1/x should work properly")
+    void testTeilaufgabe2c()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("unary operator % should work properly")
+    void testTeilaufgabe2d()
+    {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "0.5";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
