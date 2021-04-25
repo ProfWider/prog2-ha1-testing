@@ -108,7 +108,7 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("durch 0 = error")
+    @DisplayName("divided by 0 = error")
     void testDividingByZero() {
         Calculator calc = new Calculator();
 
@@ -124,10 +124,40 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should display the result in percent")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("%");
+
+        String expected = "1";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display the squareroot ")
+    void testSqrt() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(6);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "2.449489742783178";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 
-    
     //TODO hier weitere Tests erstellen
 }
 
