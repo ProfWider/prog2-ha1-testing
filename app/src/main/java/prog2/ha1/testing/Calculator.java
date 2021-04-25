@@ -63,7 +63,7 @@ public class Calculator {
 
         } else {
             DecimalFormat df = new DecimalFormat("#.########"); //Klasse wird genutzt um n-te Nachkommastellen aufzurunden
-            screen = df.format(result); //ergebnis bzw. result wird bis zu 8 Nachkommastelle aufgerundet und an screen als String übergeben
+            screen = df.format(result).replace(',','.'); //ergebnis bzw. result wird bis zu 8 Nachkommastelle aufgerundet und an screen als String übergeben
             if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
         }
     }
