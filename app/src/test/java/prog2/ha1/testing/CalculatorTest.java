@@ -38,6 +38,8 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+
+    // positiver Test
     @Test
     @DisplayName("should display result after subtracting two positive numbers")
     void testPositiveSubtraction(){
@@ -49,6 +51,40 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "3";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    // 2 negative Tests
+    @Test
+    @DisplayName("should display percentage")
+     void negativeTestOne(){
+         Calculator calc = new Calculator();
+
+         calc.pressDigitKey(9);
+         calc.pressUnaryOperationKey("%");
+         //calc.pressDigitKey();
+         calc.pressEqualsKey();
+
+         String expected = "0.09";
+         String actual = calc.readScreen();
+
+         assertEquals(expected, actual);
+     }
+
+    @Test
+    @DisplayName("should display results after '1/x'")
+    void negativeTestTwo(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressUnaryOperationKey("1/x");
+        //calc.pressDigitKey();
+        calc.pressEqualsKey();
+
+        String expected = "0.125";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);

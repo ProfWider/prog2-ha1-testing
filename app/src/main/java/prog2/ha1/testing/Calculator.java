@@ -38,6 +38,7 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
