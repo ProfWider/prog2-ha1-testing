@@ -64,7 +64,7 @@ public class Calculator {
     }
 
     public void pressDotKey(String s) { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey(String s) { // die +/- Taste
