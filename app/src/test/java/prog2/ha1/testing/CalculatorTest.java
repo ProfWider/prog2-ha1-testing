@@ -31,7 +31,7 @@ class CalculatorTest {
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
-        String expected = "4";
+        String expected = "4.0";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -39,12 +39,12 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("Diminution zwischen zwei_positive Zahlen")
+    @DisplayName("adieren zwischen zwei_positive Zahlen")
     void testPositivesubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(6);
-        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(2);
         calc.pressEqualsKey();
 
@@ -54,7 +54,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display correct number after pressing digit keys")
+    @DisplayName("zahlen adieren und divisionieren")
     void testPlusWithDivision() {
         Calculator calc = new Calculator();
 
@@ -71,7 +71,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display correct number after pressing digit keys")
+    @DisplayName("Division duch null ergibt fehler")
     void testDivisionByZero() {
         Calculator calc = new Calculator();
 
@@ -85,6 +85,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should display correct number after pressing digit keys")
+    void testWurzel() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("sqrt");
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
