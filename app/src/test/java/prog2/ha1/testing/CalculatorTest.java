@@ -53,7 +53,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("should display square root of two positive numbers")
-    void testPositiveDivision() {
+    void testSquareRoot() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(6);
