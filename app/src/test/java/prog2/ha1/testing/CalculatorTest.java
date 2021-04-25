@@ -47,10 +47,10 @@ class CalculatorTest {
 
         calc.pressDigitKey(4);
         calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "8";
+        String expected = "12";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
