@@ -16,7 +16,7 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        //Lösung zur ersten Implementierungslücke
+        // Lösung zur ersten Implementierungslücke
         //if(screen.equals("0")) screen = "";
 
         if(latestOperation.isEmpty()) {
@@ -44,7 +44,7 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
-        //Lösung zur zweiten Implementierungslücke
+        // Lösung zur zweiten Implementierungslücke
         if("√".equals(operation)){
             screen = String.valueOf(Math.sqrt(Double.parseDouble(screen)));
 
