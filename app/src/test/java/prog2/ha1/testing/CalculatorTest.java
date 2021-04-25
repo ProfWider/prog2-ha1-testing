@@ -74,20 +74,20 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display result after calculating the squareroot")
-    void testPositiveSquareRooting() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(16);
-        calc.pressUnaryOperationKey("√");
-        calc.pressDigitKey(4);
-        calc.pressEqualsKey();
-
-        String expected = "4";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
+//    @Test
+//    @DisplayName("should display result after calculating the squareroot")
+//    void testPositiveSquareRooting() {
+//        Calculator calc = new Calculator();
+//
+//        calc.pressDigitKey(16);
+//        calc.pressUnaryOperationKey("√");
+//        calc.pressDigitKey(4);
+//        calc.pressEqualsKey();
+//
+//        String expected = "4";
+//        String actual = calc.readScreen();
+//
+//        assertEquals(expected, actual);
+//    }
 }
 
