@@ -71,13 +71,12 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display negative number after pressing negativeKey first")
-    void testNegativeNumbers() {
+    @DisplayName("should display negative number after pressing negativeKey")
+    void testShowNegativeNumber() {
         Calculator calc = new Calculator();
 
         calc.pressNegativeKey();
         calc.pressDigitKey(2);
-
 
         String expected = "-2";
         String actual = calc.readScreen();
