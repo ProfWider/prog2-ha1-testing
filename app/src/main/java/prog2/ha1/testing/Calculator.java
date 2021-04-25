@@ -42,9 +42,6 @@ public class Calculator {
         }
         else { var result = Double.parseDouble(screen)/100;
             screen = Double.toString(result);
-            if(screen.endsWith(".0"))
-                screen = screen.substring(0,screen.length()-1);
-
         }
     }
 
