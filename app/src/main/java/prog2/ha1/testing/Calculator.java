@@ -43,8 +43,8 @@ public class Calculator {
 
     public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
         if (latestOperation == "")
-        latestOperation = operation;
-        else{
+            latestOperation = operation;
+        else {
             var result = switch (latestOperation) {
                 case "+" -> latestValue + value;
                 case "-" -> latestValue - value;
