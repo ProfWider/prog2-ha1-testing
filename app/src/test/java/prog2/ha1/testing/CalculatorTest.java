@@ -65,11 +65,8 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("1/x");
-        calc.pressEqualsKey();
-
-
-
+        calc.pressUnaryOperationKey("1/x");
+        
         String expected = "0.5";
         String actual = calc.readScreen();
 

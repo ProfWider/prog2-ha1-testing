@@ -38,6 +38,13 @@ public class Calculator {
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        latestOperation = operation;
+        var result = switch (latestOperation) {
+        case "1/x"-> 1/Double.parseDouble(screen);
+        default -> throw new IllegalArgumentException();
+        };
+        screen = Double.toString(result);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -50,7 +57,7 @@ public class Calculator {
 
     public void pressEqualsKey() { // die Taste =
         var result = switch(latestOperation) {
-            case "1/x"-> latestValue + Double.parseDouble(screen);
+            case "1/x"-> 1/Double.parseDouble(screen);
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
