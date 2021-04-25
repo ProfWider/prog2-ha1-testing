@@ -54,6 +54,11 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
+        System.out.printf(latestOperation, latestValue);
+        if(latestOperation == "/" && screen.equals("0")){
+            screen = "Error";
+        }
+        else{
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
