@@ -1,8 +1,9 @@
 package prog2.ha1.testing;
 
+import java.text.NumberFormat;
+
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
-
     private String screen = "0";
 
     private double latestValue;
@@ -11,6 +12,7 @@ public class Calculator {
 
     public String readScreen() { // was steht jetzt auf dem Bildschirm
         return screen;
+
     }
 
     public void pressDigitKey(int digit) { // also die Tasten 0-9
@@ -37,11 +39,19 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        var result = switch(operation) {
+            case "sqrt" -> Math.sqrt(Double.parseDouble(screen)); //Double.parseDouble() aus meth pressDigitKey
+            case "recip" -> (1 / (Double.parseDouble(screen)));
+            default -> throw new IllegalArgumentException();
+        };
+        // QuellIdee https://www.youtube.com/watch?v=KLvnQhdx4BI Java: formatting numbers with NumberFormat
+        NumberFormat nf = NumberFormat.getNumberInstance(); //initialize numberformat
+        nf.setMaximumFractionDigits(8); //max number of decimal digits
+        screen = nf.format(result);//rounded operation
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
-        if(!screen.endsWith(".")) screen = screen + ".";
+        if(!screen.contains(".")) screen = screen + ".";
     }
 
     public void pressNegativeKey() { // die +/- Taste
