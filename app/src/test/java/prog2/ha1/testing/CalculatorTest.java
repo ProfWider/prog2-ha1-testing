@@ -2,6 +2,7 @@ package prog2.ha1.testing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
@@ -38,5 +39,51 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
+    @Test
+    @DisplayName("Should display  result after multiply two numbers")
+    void testMutiply() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "16";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("Should display decimal numbers")
+    void decimalNumbers() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("1/x");
+        calc.pressEqualsKeyUnary();
+        String expected = "0.2";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display division with rest")
+    void moduloOperation() {
+
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressUnaryOperationKey("%");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKeyUnary();
+        String expected = "1";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
 }
 
