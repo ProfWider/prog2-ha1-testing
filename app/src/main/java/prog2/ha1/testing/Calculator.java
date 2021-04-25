@@ -49,14 +49,22 @@ public class Calculator {
     }
 
     public void pressEqualsKey() { // die Taste =
-        var result = switch(latestOperation) {
-            case "+" -> latestValue + Double.parseDouble(screen);
-            case "-" -> latestValue - Double.parseDouble(screen);
-            case "x" -> latestValue * Double.parseDouble(screen);
-            case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
-        };
-        screen = Double.toString(result);
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
+        try {
+            if (latestOperation.equals("/") && screen.equals("0")) throw new Exception("Error");
+            var result = switch (latestOperation) {
+                case "+" -> latestValue + Double.parseDouble(screen);
+                case "-" -> latestValue - Double.parseDouble(screen);
+                case "x" -> latestValue * Double.parseDouble(screen);
+                case "/" -> latestValue / Double.parseDouble(screen);
+                case "1/x" -> 1 / Double.parseDouble(screen);
+
+                default -> throw new IllegalArgumentException();
+            };
+            screen = Double.toString(result);
+
+            if (screen.endsWith(".0")) screen = screen.substring(0, screen.length() - 2);
+        } catch (Exception e) {
+            screen = e.getMessage();
+        }
     }
 }
