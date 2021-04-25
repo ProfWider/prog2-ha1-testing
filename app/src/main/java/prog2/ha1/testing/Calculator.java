@@ -13,6 +13,9 @@ public class Calculator {
         return screen;
     }
 
+    public  boolean n;
+
+
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
@@ -32,20 +35,47 @@ public class Calculator {
         latestValue = 0.0;
     }
 
-    public void pressBinaryOperationKey(String operation)  { // also die Tasten /,x,-,+
+    public void pressBinaryOperationKey(String operation) { // also die Tasten /,x,-,+
+
         latestOperation = operation;
+        if (n) {
+            latestOperation = "-";
+            n=true;
+
+        }
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
 
+        latestOperation = operation;
+        pressEqualsKey();
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
+
         if(!screen.endsWith(".")) screen = screen + ".";
+
     }
 
-    public void pressNegativeKey() { // die +/- Taste
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+    public void pressNegativeKey(int digit) { // die +/- Taste
+
+        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(screen.equals("0")) screen = "";
+
+        if(screen.equals("0")) screen = "";
+
+
+        if(!n) {
+            screen = "-" + digit;
+            n = true;
+        } else {
+            latestValue = Double.parseDouble(screen);
+            screen = latestOperation + digit;
+            screen = Integer.toString(digit);
+            n = false;
+        }
+
+
     }
 
     public void pressEqualsKey() { // die Taste =
@@ -54,6 +84,8 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "Wurzel" -> Math.sqrt(Double.parseDouble(screen));
+            case "" -> Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
