@@ -6,37 +6,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Retro calculator")
 class CalculatorTest {
-
     @Test
-    @DisplayName("should display correct number after pressing digit keys")
-    void testDigitInput() {
+    @DisplayName("should display result after multiplying two positive numbers")
+    void calculatorCanDoTwoTimesFour()
+    {
         Calculator calc = new Calculator();
-
-        calc.pressDigitKey(4);
         calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+        assertEquals("8", calc.readScreen());
+        System.out.println(calc.readScreen());
+    }
 
-        String expected = "42";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
+    //fail
+    @Test
+    @DisplayName("should display number negative")
+    void calculatorCanDoNegative()
+    {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(3);
+        calc.pressNegativeKey();
+        assertEquals("-3", calc.readScreen());
+        System.out.println(calc.readScreen());
     }
 
     @Test
-    @DisplayName("should display result after adding two positive numbers")
-    void testPositiveAddition() {
+    @DisplayName("should display result after addition with dot ")
+    void calculatorCanDoAdditionWithDot()
+    {
         Calculator calc = new Calculator();
 
+        calc.pressDigitKey(5);
+        calc.pressDotKey();
         calc.pressDigitKey(2);
         calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
         calc.pressEqualsKey();
-
-        String expected = "4";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
+        assertEquals("8.7", calc.readScreen());
+        System.out.println(calc.readScreen());
     }
-
-    //TODO hier weitere Tests erstellen
 }
 
