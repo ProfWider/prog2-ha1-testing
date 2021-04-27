@@ -53,12 +53,12 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
     @Test
-    @DisplayName("should display result after numberToPercent")
+    @DisplayName("should display result after percentToNumber")
     void testNumberToPercent() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("%");
+        calc.pressUnaryOperationKey("%");
         calc.pressEqualsKey();
 
         String expected = "0.04";
@@ -68,12 +68,12 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display result after multiplying two positive numbers")
+    @DisplayName("should display result after pulling squareRoot")
     void testSquareRoot() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("√");
+        calc.pressUnaryOperationKey("√");
         calc.pressEqualsKey();
 
         String expected = "2";
