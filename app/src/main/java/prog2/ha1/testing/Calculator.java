@@ -3,7 +3,7 @@ package prog2.ha1.testing;
 // behaviour inspired by https://www.online-calculator.com/
 public class Calculator {
 
-    private String screen = "0";
+    private String screen = "";
 
     private double latestValue;
 
@@ -16,7 +16,7 @@ public class Calculator {
     public void pressDigitKey(int digit) { // also die Tasten 0-9
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0")) screen = "";
+        if(digit == 0 && latestOperation.equals("/"))throw new IllegalArgumentException("division by zero not possible");
 
         if(latestOperation.isEmpty()) {
             screen = screen + digit;
@@ -37,7 +37,7 @@ public class Calculator {
     }
 
     public void pressUnaryOperationKey(String operation) { // also die Tasten Wurzel, %, 1/x
-
+        latestOperation = operation;
     }
 
     public void pressDotKey() { // die Komma- bzw. Punkt-Taste
@@ -54,6 +54,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "^" -> Math.sqrt(Double.parseDouble(screen));
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);

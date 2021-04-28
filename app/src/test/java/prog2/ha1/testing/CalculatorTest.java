@@ -36,7 +36,41 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("Should display result after multiplying two numbers")
+    void testMultiplying(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
 
-    //TODO hier weitere Tests erstellen
+        String expected = "20";
+        String actual  = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Should throw exception after division by zero")
+    void testDivisionByZero() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        assertThrows(IllegalArgumentException.class, () ->
+            { calc.pressDigitKey(0); }
+        );
+    }
+
+    @Test
+    @DisplayName("Should display result after taking the square root of a value")
+    void testSquareRootCalculation(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(4);
+        calc. pressUnaryOperationKey("^");
+        calc.pressEqualsKey();
+        assertEquals("2", calc.readScreen());
+    }
+
 }
 
