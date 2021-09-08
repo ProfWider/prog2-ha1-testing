@@ -39,7 +39,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
     @Test
-    @DisplayName("should display two results after subtract two positive numbers.")
+    @DisplayName("should display one result after subtract two positive numbers.")
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
@@ -53,6 +53,37 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
 
+    }
+    @Test
+    @DisplayName("Second Subtraction Test")
+    void testNegativeSubtraction(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "-2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
+
+    }
+    @Test
+    @DisplayName("should display 18.")
+    void thirdTest(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(9);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "18";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
     }
 
     @Test
