@@ -72,7 +72,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-/*
+
     @Test
     @DisplayName("should display result after pressing two times Equal Key")
     void test2wrongresult() {
@@ -106,6 +106,6 @@ class CalculatorTest {
         String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
-*/
+
 }
 
