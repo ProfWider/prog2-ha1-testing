@@ -20,7 +20,7 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-    /*
+
     @Test
     @DisplayName("should display result after adding two positive numbers")
     void testPositiveAddition() {
@@ -72,7 +72,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-
+/*
     @Test
     @DisplayName("should display result after pressing two times Equal Key")
     void test2wrongresult() {
