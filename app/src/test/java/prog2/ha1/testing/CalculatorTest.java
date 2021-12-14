@@ -12,7 +12,7 @@ class CalculatorTest {
     void testDigitInput() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
+        calc.pressDigitKey(5);
         calc.pressDigitKey(2);
 
         String expected = "42";
