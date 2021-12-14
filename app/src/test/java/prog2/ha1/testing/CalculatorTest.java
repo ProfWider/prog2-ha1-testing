@@ -12,8 +12,8 @@ class CalculatorTest {
     void testDigitInput() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(10);
+        calc.pressDigitKey(1);
 
         String expected = "42";
         String actual = calc.readScreen();
@@ -38,5 +38,70 @@ class CalculatorTest {
     }
 
     //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should display result after subtract two positive numbers")
+    void testPositiveSubtraction() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(8);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(1);
+        calc.pressEqualsKey();
+
+        String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after multiply two positive numbers")
+    void testPositiveMultiplication() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "9";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after digit ")
+    void testPercentage() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(3);
+        calc.pressDigitKey(3);
+        calc.pressUnaryOperationKey("%");
+        calc.pressEqualsKey();
+
+
+        String expected = "0.33";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display result after subtract two positive numbers")
+    void testSubtractionoftwonumbers() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(2);
+        calc.pressDigitKey(4);
+        calc.pressEqualsKey();
+
+        String expected = "-20";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+}
