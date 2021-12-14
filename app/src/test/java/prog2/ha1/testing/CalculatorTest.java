@@ -13,7 +13,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(10);
-        calc.pressDigitKey(3);
+        calc.pressDigitKey(1);
 
         String expected = "42";
         String actual = calc.readScreen();
